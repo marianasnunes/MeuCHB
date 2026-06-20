@@ -229,6 +229,7 @@
     var resultDescEl = root.querySelector('.quiz-dc-result-desc');
     var resultCardsWrap = root.querySelector('.quiz-dc-result-cards');
     var tipEl = root.querySelector('.quiz-dc-tip');
+    var mesesTextEl = root.querySelector('.quiz-dc-2meses-text');
     var ctaEl = root.querySelector('.quiz-dc-cta');
 
     function showScreen(name) {
@@ -304,6 +305,10 @@
       });
 
       tipEl.innerHTML = '💡 <strong>' + r.tipLead + '</strong> ' + r.tipText;
+
+      if (mesesTextEl) {
+        mesesTextEl.innerHTML = 'Use o <strong>' + r.kit + '</strong> por <strong>2 meses</strong> para sentir o resultado completo. Ao final desse período, <strong>refaça este diagnóstico</strong> — o cabelo muda, e o quiz revela a sua necessidade capilar atual para o próximo ciclo.';
+      }
 
       ctaEl.textContent = r.cta;
       ctaEl.setAttribute('href', ctaUrl);
