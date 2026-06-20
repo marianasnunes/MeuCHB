@@ -6,7 +6,11 @@
         "eyebrow": "MEUCHB.COM.BR · MÉTODO CH",
         "heading": "Diagnóstico <em>Capilar</em>",
         "subheading": "Responda 8 perguntas e descubra qual kit foi feito para o seu cabelo.",
-        "cta_url": "/collections/all"
+        "url_queda": "/products/cronograma-capilar",
+        "url_reconstrucao": "/products/kit-reconstrucao-diamond",
+        "url_hidratacao": "/products/kit-hidratacao-diamond",
+        "url_nutricao": "/products/kit-nutricao-diamond",
+        "url_cronograma": "/products/cronograma-capilar"
       }
     }
   },
