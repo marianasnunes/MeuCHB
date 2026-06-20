@@ -53,6 +53,42 @@
    </variant-sku>
    {%- when 'price' -%}
    <div class="product-info__price" style="padding-top: -50px;">
+      {%- if product.compare_at_price > product.price -%}
+        {%- assign _chb_pix = section.settings.percent_pix_discount | default: 8 -%}
+        {%- assign _chb_max_inst = settings.modo_parcelamento | default: 12 -%}
+        {%- assign _chb_ir = 0.0 -%}
+        {%- case _chb_max_inst -%}
+          {%- when 2  -%}{%- assign _chb_ir = settings.taxa_segunda_parcela           | times: 1.0 | divided_by: 100 -%}
+          {%- when 3  -%}{%- assign _chb_ir = settings.taxa_terceira_parcela          | times: 1.0 | divided_by: 100 -%}
+          {%- when 4  -%}{%- assign _chb_ir = settings.taxa_quarta_parcela            | times: 1.0 | divided_by: 100 -%}
+          {%- when 5  -%}{%- assign _chb_ir = settings.taxa_quinta_parcela            | times: 1.0 | divided_by: 100 -%}
+          {%- when 6  -%}{%- assign _chb_ir = settings.taxa_sexta_parcela             | times: 1.0 | divided_by: 100 -%}
+          {%- when 7  -%}{%- assign _chb_ir = settings.taxa_setima_parcela            | times: 1.0 | divided_by: 100 -%}
+          {%- when 8  -%}{%- assign _chb_ir = settings.taxa_oitava_parcela            | times: 1.0 | divided_by: 100 -%}
+          {%- when 9  -%}{%- assign _chb_ir = settings.taxa_nona_parcela              | times: 1.0 | divided_by: 100 -%}
+          {%- when 10 -%}{%- assign _chb_ir = settings.taxa_decima_parcela            | times: 1.0 | divided_by: 100 -%}
+          {%- when 11 -%}{%- assign _chb_ir = settings.taxa_decima_primeira_parcela   | times: 1.0 | divided_by: 100 -%}
+          {%- when 12 -%}{%- assign _chb_ir = settings.taxa_decima_segunda_parcela    | times: 1.0 | divided_by: 100 -%}
+        {%- endcase -%}
+        {%- assign _chb_save      = product.compare_at_price | minus: product.price -%}
+        {%- assign _chb_disc_pct  = _chb_save | times: 100 | divided_by: product.compare_at_price -%}
+        {%- assign _chb_sub_pix   = product.price           | times: _chb_pix | divided_by: 100 -%}
+        {%- assign _chb_full_pix  = product.compare_at_price | times: _chb_pix | divided_by: 100 -%}
+        {%- assign _chb_sub_inst  = product.price           | times: _chb_ir | plus: product.price           | divided_by: _chb_max_inst -%}
+        {%- assign _chb_full_inst = product.compare_at_price | times: _chb_ir | plus: product.compare_at_price | divided_by: _chb_max_inst -%}
+        <div class="chb-sub-data"
+          data-sub="{{ product.price }}"
+          data-full="{{ product.compare_at_price }}"
+          data-pix="{{ _chb_pix }}"
+          data-inst="{{ _chb_max_inst }}"
+          data-sub-inst="{{ _chb_sub_inst }}"
+          data-full-inst="{{ _chb_full_inst }}"
+          data-sub-pix="{{ _chb_sub_pix }}"
+          data-full-pix="{{ _chb_full_pix }}"
+          data-save="{{ _chb_save }}"
+          data-disc-pct="{{ _chb_disc_pct }}"
+          hidden aria-hidden="true"></div>
+      {%- endif -%}
       <div class="rating-with-text">
          {%- render 'price-list',
          variant: product.selected_or_first_available_variant,
@@ -148,7 +184,7 @@
          {% if settings.show_installments %}{% render 'ghost-payments', current_variant: selected_variant %}{% endif %}
          <p class="more_payments_bar" {{ block.shopify_attributes }}>
          ou até {{ max_installments }}x de R$
-         {{ installment_price | money_without_currency }}{% if settings.show_installments %}
+         <span class="chb-inst-val">{{ installment_price | money_without_currency }}</span>{% if settings.show_installments %}
          <div>
             <span class="more-payments" style="background-color: #e8e8e8; padding: 2px; border-radius: 4px;">
             <button onclick="toggleModal()" class="product-info__payment-button"> + formas de pagamento </button>
@@ -340,6 +376,48 @@
       -%}
    </div>
    {%- when 'buy_buttons' -%}
+   {%- if product.compare_at_price > product.price -%}
+   <div class="chb-sub-selector">
+     <div class="chb-sub-label">Escolha como comprar</div>
+     <div class="chb-sub-cards">
+
+       <div class="chb-sel-card chb-active" data-mode="sub">
+         <div class="chb-sel-inner">
+           <div class="chb-radio"><div class="chb-radio-dot"></div></div>
+           <div class="chb-card-body">
+             <div class="chb-card-title-row">
+               <span class="chb-card-title">&#x21BB; Assinatura mensal</span>
+               <span class="chb-eco-badge">MAIS ECON&#xD4;MICO</span>
+             </div>
+             <div class="chb-card-sub">Receba todo m&#xEA;s em casa &middot; Cancele quando quiser</div>
+             <div class="chb-card-prices">
+               <span class="chb-card-price chb-js-sub-price"></span>
+               <span class="chb-card-compare chb-js-full-price"></span>
+               <span class="chb-save-badge chb-js-save"></span>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="chb-sel-card" data-mode="once">
+         <div class="chb-sel-inner">
+           <div class="chb-radio"><div class="chb-radio-dot"></div></div>
+           <div class="chb-card-body">
+             <div class="chb-card-title-row">
+               <span class="chb-card-title">Compra &#xFA;nica</span>
+             </div>
+             <div class="chb-card-sub">Pagamento &#xFA;nico, sem recorr&#xEA;ncia</div>
+             <div class="chb-card-prices">
+               <span class="chb-card-price chb-js-full-price"></span>
+             </div>
+           </div>
+         </div>
+       </div>
+
+     </div>
+     <p class="chb-sub-note">O desconto no PIX ({{ section.settings.percent_pix_discount | default: 8 }}%) e o parcelamento em at&#xE9; {{ settings.modo_parcelamento | default: 12 }}x valem para as duas op&#xE7;&#xF5;es.</p>
+   </div>
+   {%- endif -%}
    <div class="container-buy-quant  {{ block.shopify_attributes }}">
       <div class="product-info__quantity-selector">
          <div class="form-control">
@@ -827,4 +905,92 @@
      main();
    });
                setInterval(main, 10000);
+</script>
+
+<style>
+/* ── Subscription selector ── */
+.chb-sub-selector{margin-bottom:18px;display:flex;flex-direction:column;gap:10px;}
+.chb-sub-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#9a8b76;}
+.chb-sub-cards{display:flex;flex-direction:column;gap:9px;}
+.chb-sel-card{border:1.5px solid #ddd6cb;border-radius:10px;padding:13px 15px;cursor:pointer;transition:border-color .15s,background .15s;background:#fff;}
+.chb-sel-card.chb-active{border-color:#1e8a6e;background:#f4faf7;}
+.chb-sel-inner{display:flex;align-items:flex-start;gap:12px;}
+.chb-radio{width:18px;height:18px;min-width:18px;border-radius:50%;border:2px solid #c5bdb4;display:flex;align-items:center;justify-content:center;margin-top:2px;transition:border-color .15s;}
+.chb-sel-card.chb-active .chb-radio{border-color:#1e8a6e;}
+.chb-radio-dot{width:9px;height:9px;border-radius:50%;background:#1e8a6e;display:none;}
+.chb-sel-card.chb-active .chb-radio-dot{display:block;}
+.chb-card-body{flex:1;}
+.chb-card-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.chb-card-title{font-weight:700;font-size:15px;color:#2b2b2b;}
+.chb-eco-badge{background:#1e8a6e;color:#fff;font-size:10px;font-weight:700;letter-spacing:.05em;padding:2px 8px;border-radius:20px;}
+.chb-card-sub{font-size:12.5px;color:#7a7164;margin-top:4px;line-height:1.4;}
+.chb-card-prices{display:flex;align-items:baseline;gap:9px;margin-top:8px;flex-wrap:wrap;}
+.chb-card-price{font-weight:700;font-size:20px;color:#1f1f1f;}
+.chb-card-compare{font-size:13px;color:#9b9389;text-decoration:line-through;}
+.chb-save-badge{background:#eef6f0;color:#2f8a72;font-size:11px;font-weight:700;padding:2px 7px;border-radius:4px;}
+.chb-sub-note{font-size:11.5px;color:#9a9183;margin-top:2px;}
+</style>
+
+<script>
+(function(){
+  'use strict';
+  function moneyBR(cents){
+    return 'R$ '+new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(cents/100);
+  }
+  function numBR(cents){
+    return new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(cents/100);
+  }
+  function initSub(sel){
+    var dataEl=document.querySelector('.chb-sub-data');
+    if(!dataEl) return;
+    var sub     =parseInt(dataEl.dataset.sub);
+    var full    =parseInt(dataEl.dataset.full);
+    var subInst =parseInt(dataEl.dataset.subInst);
+    var fullInst=parseInt(dataEl.dataset.fullInst);
+    var subPix  =parseInt(dataEl.dataset.subPix);
+    var fullPix =parseInt(dataEl.dataset.fullPix);
+    var save    =parseInt(dataEl.dataset.save);
+
+    sel.querySelectorAll('.chb-js-sub-price').forEach(function(e){e.textContent=moneyBR(sub);});
+    sel.querySelectorAll('.chb-js-full-price').forEach(function(e){e.textContent=moneyBR(full);});
+    sel.querySelectorAll('.chb-js-save').forEach(function(e){e.textContent='economize '+moneyBR(save);});
+
+    function applyMode(mode){
+      var isSub=mode==='sub';
+      sel.querySelectorAll('.chb-sel-card').forEach(function(c){
+        c.classList.toggle('chb-active',c.dataset.mode===mode);
+      });
+      // Main sale price
+      var sp=document.querySelector('sale-price');
+      if(sp) sp.textContent=moneyBR(isSub?sub:full);
+      // Compare-at row visibility
+      var cp=document.querySelector('compare-at-price');
+      if(cp) cp.hidden=!isSub;
+      // Discount badges
+      document.querySelectorAll('.product-info__badge-list').forEach(function(b){
+        b.style.visibility=isSub?'':'hidden';
+      });
+      // PIX economy
+      var eco=document.querySelector('.discount-economy');
+      if(eco) eco.textContent='Economize '+moneyBR(isSub?subPix:fullPix);
+      // Installment value
+      var iv=document.querySelector('.chb-inst-val');
+      if(iv) iv.textContent=numBR(isSub?subInst:fullInst);
+    }
+
+    sel.querySelectorAll('.chb-sel-card').forEach(function(card){
+      card.addEventListener('click',function(){applyMode(card.dataset.mode);});
+    });
+    applyMode('sub');
+  }
+
+  function boot(){
+    document.querySelectorAll('.chb-sub-selector').forEach(initSub);
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',boot);
+  } else {
+    setTimeout(boot,0);
+  }
+})();
 </script>
