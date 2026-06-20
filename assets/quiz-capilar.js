@@ -202,7 +202,7 @@
     root.dataset.quizDcInitialized = 'true';
 
     opts = opts || {};
-    var ctaUrl = opts.ctaUrl || '/collections/all';
+    var ctaUrls = opts.ctaUrls || {};
 
     var state = { screen: 'intro', qIndex: 0, answers: {} };
 
@@ -311,7 +311,7 @@
       }
 
       ctaEl.textContent = r.cta;
-      ctaEl.setAttribute('href', ctaUrl);
+      ctaEl.setAttribute('href', ctaUrls[key] || '/collections/all');
 
       try {
         if (window.dataLayer) {
