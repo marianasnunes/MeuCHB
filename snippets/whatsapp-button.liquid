@@ -1,0 +1,87 @@
+<!-- Botão WhatsApp Fixo -->
+{% if settings.enable_whatsapp_button %}
+<a href="https://api.whatsapp.com/send?phone={{ settings.whatsapp_number }}&text={{ settings.whatsapp_message | escape }}"
+   target="_blank"
+   class="whatsapp-btn"
+   style="position: fixed; bottom: 2px; right: 10px; z-index: 9; display: block; transition: all 0.3s ease;">
+  <div class="whatsapp-btn-icon">
+    <img src="https://host2b.net/download/imagem/whatsapp-icon.png" 
+         style="height: 50px; display: block;" 
+         alt="WhatsApp">
+  </div>
+  <div class="whatsapp-btn-message">
+    Precisa de ajuda?
+  </div>
+</a>
+{% endif %}
+<!-- Estilos e Animações -->
+<style>
+  .whatsapp-btn {
+    display: flex;
+    flex-direction: row; /* Alinhamento da mensagem ao lado do botão */
+    align-items: center;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  
+  .whatsapp-btn-icon {
+    position: relative;
+    z-index: 10;
+  }
+
+  .whatsapp-btn-message {
+    position: absolute;
+    bottom: 35px;
+    right: 65px; /* Ajustando a posição para aparecer ao lado */
+    background-color: #ffffff;
+    padding: 10px 20px 10px 15px;
+    border-radius: 28px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+    font-size: 12px;
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap; /* Garantir que a mensagem não quebre */
+  }
+
+  .whatsapp-btn:hover .whatsapp-btn-message {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Exibindo a mensagem ao lado */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
+  }
+
+  .whatsapp-btn:hover .whatsapp-btn-icon img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+
+  /* Animação de saída suave */
+  .whatsapp-btn .whatsapp-btn-message {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform: translateX(10px); /* Mensagem começa com pequeno deslocamento */
+  }
+
+  /* Ao sair do hover, animação de saída suave */
+  .whatsapp-btn .whatsapp-btn-message {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px); /* A mensagem sai de forma suave */
+  }
+  
+  .whatsapp-btn:hover .whatsapp-btn-message {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* A mensagem aparece ao lado */
+  }
+
+  /* Animação de transição do ícone */
+  .whatsapp-btn:hover .whatsapp-btn-icon img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+  }
+</style>

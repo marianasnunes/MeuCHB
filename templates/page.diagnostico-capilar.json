@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "quiz_capilar_main": {
+      "type": "quiz-capilar",
+      "settings": {
+        "eyebrow": "MEUCHB.COM.BR · MÉTODO CH",
+        "heading": "Diagnóstico <em>Capilar</em>",
+        "subheading": "Responda 8 perguntas e descubra qual kit foi feito para o seu cabelo.",
+        "cta_url": "/collections/all"
+      }
+    }
+  },
+  "order": [
+    "quiz_capilar_main"
+  ]
+}

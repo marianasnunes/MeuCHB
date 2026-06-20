@@ -1,0 +1,182 @@
+<style>
+  .banner-sobreposto-{{ section.id }} {
+    position: relative;
+    /* Faz o encaixe com a seção de cima */
+    margin-top: -60px; 
+    z-index: 10;
+    /* Arredonda as pontas */
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 650px; 
+  }
+  
+  .banner-sobreposto-{{ section.id }} .banner-bg-image {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  /* Sobreposição escura para o texto branco ler bem */
+  .banner-sobreposto-{{ section.id }}::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 2;
+  }
+
+  .banner-sobreposto-{{ section.id }} .banner-content {
+    position: relative;
+    z-index: 3;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  .banner-sobreposto-{{ section.id }} .linha-1 {
+    font-family: 'Magnat Head', 'Magnat', sans-serif !important;
+    font-size: 70px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1;
+    color: #ffffff !important; /* Força ser branco ignorando o marrom global */
+  }
+
+  .banner-sobreposto-{{ section.id }} .linha-2 {
+    font-family: 'Magnat Head', 'Magnat', sans-serif !important;
+    font-size: 32px;
+    font-weight: 600;
+    margin: 10px 0;
+    line-height: 1.2;
+    color: #ffffff !important;
+  }
+
+  .banner-sobreposto-{{ section.id }} .linha-3 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0 35px;
+    color: #ffffff !important;
+  }
+
+  .banner-sobreposto-{{ section.id }} .btn-custom {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 16px 36px;
+    border-radius: 50px; /* Botão em formato de pílula igual ao Figma */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: transform 0.2s;
+  }
+  
+  .banner-sobreposto-{{ section.id }} .btn-custom:hover {
+    transform: scale(1.05);
+  }
+
+  /* Ajustes para Celular */
+  @media screen and (max-width: 768px) {
+    .banner-sobreposto-{{ section.id }} {
+      min-height: 450px;
+      margin-top: -40px; 
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+    .banner-sobreposto-{{ section.id }} .linha-1 { font-size: 45px; }
+    .banner-sobreposto-{{ section.id }} .linha-2 { font-size: 22px; }
+    .banner-sobreposto-{{ section.id }} .linha-3 { font-size: 14px; margin-bottom: 25px; }
+    .banner-sobreposto-{{ section.id }} .btn-custom { padding: 14px 28px; font-size: 12px; }
+  }
+</style>
+
+<div class="banner-sobreposto-{{ section.id }}">
+  {%- if section.settings.image != blank -%}
+    <img src="{{ section.settings.image | img_url: 'master' }}" class="banner-bg-image" alt="Banner">
+  {%- else -%}
+    {{ 'lifestyle-2' | placeholder_svg_tag: 'banner-bg-image' }}
+  {%- endif -%}
+
+  <div class="banner-content">
+    {%- if section.settings.text_1 != blank -%}
+      <h2 class="linha-1">{{ section.settings.text_1 }}</h2>
+    {%- endif -%}
+    
+    {%- if section.settings.text_2 != blank -%}
+      <h3 class="linha-2">{{ section.settings.text_2 }}</h3>
+    {%- endif -%}
+    
+    {%- if section.settings.text_3 != blank -%}
+      <p class="linha-3">{{ section.settings.text_3 }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+      <a href="{{ section.settings.button_link }}" class="btn-custom">{{ section.settings.button_label }}</a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner Encaixe (Figma)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagem de Fundo"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Escurecer Imagem (para ler o texto melhor)",
+      "default": 15
+    },
+    {
+      "type": "text",
+      "id": "text_1",
+      "label": "Texto Gigante (Linha 1)",
+      "default": "Beleza é"
+    },
+    {
+      "type": "text",
+      "id": "text_2",
+      "label": "Texto Médio (Linha 2)",
+      "default": "sentir-se bem no próprio reflexo"
+    },
+    {
+      "type": "text",
+      "id": "text_3",
+      "label": "Texto Pequeno (Linha 3)",
+      "default": "E isso começa pelo cuidado certo."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do Botão",
+      "default": "COMEÇAR MEU CRONOGRAMA"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link do Botão"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Encaixe (Figma)"
+    }
+  ]
+}
+{% endschema %}

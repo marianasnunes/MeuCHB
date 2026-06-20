@@ -1,0 +1,582 @@
+{
+  "sections": {
+    "slideshow_rKRKrm": {
+      "type": "slideshow",
+      "blocks": {
+        "image_THb4QX": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_30.png",
+            "mobile_image": "shopify://shop_images/IMG_5657-31.jpg",
+            "content_max_width": 780,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-center-end sm:text-end",
+            "subheading": "O Kit Hidratação repõe água na fibra capilar, devolvendo brilho, maciez e leveza natural aos fios",
+            "title": "Ressecado, opaco e sem movimento?",
+            "heading_tag": "h0",
+            "button_text": "Linha completa",
+            "button_link": "https://meuchb.com.br/collections/hidratacao",
+            "text_color": "#ffffff",
+            "button_background": "#717171",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        },
+        "image_Ky7B3r": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_303.png",
+            "mobile_image": "shopify://shop_images/ChatGPT_Image_2_de_mar._de_2026_11_30_10_1.png",
+            "content_max_width": 1200,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "subheading": "Mais do que promessa: ciência aplicada com estratégia.",
+            "title": "5 anos de estudos para criar o cronograma que recupera cabelos de verdade",
+            "heading_tag": "h0",
+            "button_text": "Descubra o Kit Nutrição",
+            "button_link": "https://meuchb.com.br/collections/nutricao",
+            "text_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#272727",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_THb4QX",
+        "image_Ky7B3r"
+      ],
+      "custom_css": [
+        "button.button.button--xl {border-radius: 99px !important; background-color: inherit; border: 1px solid;}",
+        "a.button.button--xl {border-radius: 99px !important;}"
+      ],
+      "settings": {
+        "full_width": true,
+        "allow_transparent_header": false,
+        "image_size": "auto",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": true,
+        "cycle_speed": 4,
+        "background": "#ffffff",
+        "background_gradient": ""
+      }
+    },
+    "text_with_icons_rtAiYK": {
+      "type": "text-with-icons",
+      "blocks": {
+        "item_3BnCYa": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-box",
+            "mobile_icon_width": 24,
+            "icon_width": 28,
+            "icon_background_type": "none",
+            "icon_background": "#5a471e",
+            "icon_color": "#5a471e",
+            "title": "Envio gratuito",
+            "content": "<p>Para compras acima de R$400</p>"
+          }
+        },
+        "item_rTKTNp": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-credit-card",
+            "mobile_icon_width": 24,
+            "icon_width": 28,
+            "icon_background_type": "none",
+            "icon_background": "#ececec",
+            "icon_color": "#5a471e",
+            "title": "Parcelamento",
+            "content": "<p>Mais liberdade para cuidar de você</p>"
+          }
+        },
+        "item_hG33H7": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-secure-profile",
+            "mobile_icon_width": 24,
+            "icon_width": 28,
+            "icon_background_type": "none",
+            "icon_background": "#ececec",
+            "icon_color": "#5a471e",
+            "title": "Compra segura",
+            "content": "<p>Seus dados protegidos do início ao fim</p>"
+          }
+        },
+        "item_wCNc9B": {
+          "type": "item",
+          "settings": {
+            "icon": "picto-gift",
+            "mobile_icon_width": 24,
+            "icon_width": 28,
+            "icon_background_type": "none",
+            "icon_background": "#ececec",
+            "icon_color": "#5a471e",
+            "title": "Desconto único",
+            "content": "<p>Aproveite ofertas exclusivas!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_3BnCYa",
+        "item_rTKTNp",
+        "item_hG33H7",
+        "item_wCNc9B"
+      ],
+      "settings": {
+        "full_width": true,
+        "stack_on_mobile": false,
+        "title": "",
+        "heading_tag": "h3",
+        "text_alignment": "center",
+        "icon_spacing": "small",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#3c180e"
+      }
+    },
+    "featured_collection_GppBj6": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "produtos",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 50,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "",
+        "title": "Os queridinhos!",
+        "content": "",
+        "link_url": "shopify://collections/produtos",
+        "link_text": "Todos os produtos",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "scrolling-text": {
+      "type": "scrolling-text",
+      "settings": {
+        "full_width": true,
+        "text": "Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação - Autoestima - Confiança - Sofisticação -",
+        "text_size": "medium",
+        "text_style": "fill",
+        "scrolling_mode": "auto",
+        "scrolling_speed": 3,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "#3c180e",
+        "text_gradient": ""
+      }
+    },
+    "cronograma_blocos_FiAq8W": {
+      "type": "cronograma-blocos",
+      "custom_css": [],
+      "name": "Cronograma (3 Blocos)",
+      "settings": {
+        "image_1": "shopify://shop_images/image_33.png",
+        "bg_color": "#fff6ee",
+        "subheading": "👋 Olá, somos",
+        "heading": "O cronograma que recupera os fios de verdade",
+        "text": "<p>Mais do que promessa: ciência aplicada com estratégia. Desenvolvemos um método completo de tratamento capilar após 5 anos de estudos, testes e reformulações. Cada fórmula foi criada com alta concentração de ativos como vitaminas, aminoácidos e complexos nutritivos que atuam profundamente na fibra capilar. Aqui, não é apenas sobre usar produtos.<br/><br/><br/><strong>É sobre seguir um plano inteligente de recuperação.</strong></p>",
+        "btn_text": "CONHEÇA O CRONOGRAMA",
+        "btn_link": "https://meuchb.com.br/pages/cronograma-capilar",
+        "video_3": "shopify://files/videos/ANTES E DEPOIS (1).mp4"
+      }
+    },
+    "slideshow_jjPhDL": {
+      "type": "slideshow",
+      "blocks": {
+        "image_8azGmW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/NMP_4189.jpg",
+            "content_max_width": 400,
+            "mobile_text_position": "place-self-end-center text-center",
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "subheading": "COLEÇÃO ESPECIAL",
+            "title": "Marque os seus melhores momentos",
+            "heading_tag": "h1",
+            "button_text": "CONHECER COLEÇÃO",
+            "button_link": "shopify://collections/origin",
+            "text_color": "#272727",
+            "button_background": "#272727",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#272727",
+            "overlay_opacity": 0,
+            "background": "",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_8azGmW"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": true,
+        "image_size": "md",
+        "controls_type": "dots",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 6,
+        "background": "rgba(0,0,0,0)",
+        "background_gradient": ""
+      }
+    },
+    "refresh_text_FUCDHV": {
+      "type": "refresh-text",
+      "blocks": {
+        "item_a3W7Lj": {
+          "type": "item",
+          "settings": {
+            "title": "+ 5.000",
+            "subheading": "Clientes com autoestima renovada",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_refresh_text": true,
+            "animate_refresh_text_duration": 1.6
+          }
+        },
+        "item_GzYKrF": {
+          "type": "item",
+          "settings": {
+            "title": "98%",
+            "subheading": "Resultados visíveis desde as primeiras aplicações",
+            "content": "",
+            "button_text": "",
+            "button_url": "",
+            "animate_refresh_text": true,
+            "animate_refresh_text_duration": 4
+          }
+        }
+      },
+      "block_order": [
+        "item_a3W7Lj",
+        "item_GzYKrF"
+      ],
+      "settings": {
+        "full_width": false,
+        "stack_mobile": true,
+        "text_alignment": "center",
+        "refresh_text_style": "fill",
+        "text_divider": "line",
+        "refresh_text_size_ratio": 0.9,
+        "background": "",
+        "background_gradient": "",
+        "heading_text_color": "",
+        "heading_gradient": "",
+        "text_color": "",
+        "button_background": "",
+        "button_text_color": ""
+      }
+    },
+    "before_after_image_tLWdBL": {
+      "type": "before-after-image",
+      "name": "Imagem Antes/Depois",
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Transformações reais",
+        "content": "<p>Fios ressecados, quebradiços e sem vida podem recuperar força, alinhamento e luminosidade com a rotina correta.</p>",
+        "before_image": "shopify://shop_images/antes.png",
+        "after_image": "shopify://shop_images/depois.png",
+        "expand_image": false,
+        "text_position": "center",
+        "before_after_text_position": "top",
+        "before_text": "Antes",
+        "after_text": "Depois",
+        "drag_initial_position": 50,
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "before_text_color": "#ffffff",
+        "after_text_color": "#ffffff",
+        "drag_cursor_background": "#ffffff",
+        "drag_cursor_color": "#000000"
+      }
+    },
+    "featured_collection_ykrrdz": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "kits",
+        "products": [],
+        "full_width": true,
+        "stack_products": false,
+        "show_progress_bar": false,
+        "products_count": 6,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 4,
+        "subheading": "A base de qualquer cabelo saudável.",
+        "title": "Hidratar. Nutrir. Reconstruir.",
+        "content": "",
+        "link_url": "https://meuchb.com.br/collections/produtos",
+        "link_text": "Todos os produtos",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "media_grid_yBXnF9": {
+      "type": "media-grid",
+      "blocks": {
+        "image_4pmDVD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/imagem-bloco1.png",
+            "box_bg": "#faf4ee",
+            "box_text": "#3a2a20",
+            "subheading": "",
+            "title": "KIT HIDRATAÇÃO",
+            "description": "<p>Brilho e maciez imediatos.<br/>Para fios ressecados e sem vida.</p>",
+            "heading_tag": "h3",
+            "link_url": "shopify://collections/hidratacao",
+            "mobile_text_position": "place-self-end-start text-start",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "background": "#c2c2c2",
+            "background_gradient": "",
+            "text_color": "#272727",
+            "text_gradient": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_7Kxecy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/imagem-bloco2.png",
+            "box_bg": "#ffffff",
+            "box_text": "#3a2a20",
+            "subheading": "",
+            "title": "KIT NUTRIÇÃO",
+            "description": "<p><strong>Disciplina e controle do frizz</strong><br/>Para fios porosos e desalinhados.</p>",
+            "heading_tag": "h3",
+            "link_url": "shopify://collections/nutricao",
+            "mobile_text_position": "place-self-end-start text-start",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "background": "#c2c2c2",
+            "background_gradient": "",
+            "text_color": "#272727",
+            "text_gradient": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_jp8xGy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/imagem-bloco3.png",
+            "box_bg": "#faf4ee",
+            "box_text": "#3a2a20",
+            "subheading": "",
+            "title": "KIT RECONSTRUÇÃO",
+            "description": "<p><strong>Força e resistência progressiva</strong></p><p>Para fios frágeis ou quimicamente danificados.</p>",
+            "heading_tag": "h3",
+            "link_url": "shopify://collections/reconstrucao",
+            "mobile_text_position": "place-self-end-start text-start",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-end-start sm:text-start",
+            "background": "#c2c2c2",
+            "background_gradient": "",
+            "text_color": "#272727",
+            "text_gradient": "",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_4pmDVD",
+        "image_7Kxecy",
+        "image_jp8xGy"
+      ],
+      "settings": {
+        "full_width": true,
+        "reduce_width": false,
+        "desktop_row_height": 290,
+        "mobile_row_height": 150
+      }
+    },
+    "press_X4tULf": {
+      "type": "press",
+      "blocks": {
+        "quote_TyWiEj": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Patricia S.",
+            "content": "O que mais me surpreendeu foi que não é só maquiagem no fio. O cabelo realmente vai melhorando a cada uso. Dá pra sentir a diferença até molhado.",
+            "show_rating": true,
+            "rating": 4
+          }
+        },
+        "quote_JLbYxy": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Larissa P.",
+            "content": "Meu cabelo estava quebrando muito por química. O Choque de Aminoácidos salvou meus fios. Hoje sinto meu cabelo mais resistente e encorpado.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_CMPFAd": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Fernanda A.",
+            "content": "Tenho raiz oleosa e pontas secas há anos. O CHB conseguiu equilibrar meu cabelo sem pesar. O Balm Antiporosidade fez MUITA diferença no alinhamento.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_LDVQxb": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Juliana M.",
+            "content": "Achei que era mais um cronograma comum… até usar. Meu cabelo mudou muito em poucas semanas. Menos frizz, mais maciez e aquele aspecto de cabelo tratado em salão.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_VcdffL": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 130,
+            "author": "Bruna T.",
+            "content": "Depois de testar vários produtos caros, finalmente encontrei um cronograma que meu cabelo respondeu de verdade. Parece que o fio ‘absorve’ o tratamento.",
+            "show_rating": true,
+            "rating": 5
+          }
+        },
+        "quote_VQ9ict": {
+          "type": "quote",
+          "settings": {
+            "logo_width": 100,
+            "author": "Camila R.",
+            "content": "Meu cabelo era extremamente poroso e nada segurava resultado. Depois que comecei o Cronograma Capilar CHB senti meu cabelo mais alinhado, brilhoso e com toque de cabelo saudável de verdade. O Diamond virou meu vício!",
+            "show_rating": true,
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "quote_TyWiEj",
+        "quote_JLbYxy",
+        "quote_CMPFAd",
+        "quote_LDVQxb",
+        "quote_VcdffL",
+        "quote_VQ9ict"
+      ],
+      "settings": {
+        "full_width": true,
+        "content_size": "medium",
+        "background": "#f1ebe0",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "logo_item_background": "",
+        "logo_item_border": ""
+      }
+    },
+    "featured_collection_brMY49": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "collection": "origin",
+        "products": [],
+        "full_width": true,
+        "stack_products": true,
+        "show_progress_bar": false,
+        "products_count": 15,
+        "products_per_row_mobile": "2",
+        "products_per_row_desktop": 3,
+        "subheading": "VISTA A MODA",
+        "title": "Inverno na moda",
+        "content": "",
+        "link_url": "",
+        "link_text": "Ver tudo",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": "",
+        "product_card_background": "",
+        "product_card_text_color": ""
+      }
+    },
+    "banner_figma_9E78mk": {
+      "type": "banner-figma",
+      "name": "Banner Encaixe (Figma)",
+      "settings": {
+        "image": "shopify://shop_images/NMP_7493.jpg",
+        "overlay_opacity": 15,
+        "text_1": "Beleza é",
+        "text_2": "sentir-se bem no próprio reflexo",
+        "text_3": "E isso começa pelo cuidado certo.",
+        "button_label": "COMEÇAR MEU CRONOGRAMA",
+        "button_link": "shopify://collections/cronograma-capilar"
+      }
+    },
+    "revealed_image_on_scroll_D9PNYA": {
+      "type": "revealed-image-on-scroll",
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/banner-u.png",
+        "subheading": "Beleza é sentir-se bem no próprio reflexo",
+        "title": "E isso começa pelo cuidado certo.",
+        "background": "",
+        "text_color_inside": "#ffffff",
+        "text_color_outside": "#000000"
+      }
+    },
+    "quiz_promo_banner": {
+      "type": "quiz-promo-banner",
+      "settings": {}
+    }
+  },
+  "order": [
+    "slideshow_rKRKrm",
+    "quiz_promo_banner",
+    "text_with_icons_rtAiYK",
+    "featured_collection_GppBj6",
+    "scrolling-text",
+    "cronograma_blocos_FiAq8W",
+    "slideshow_jjPhDL",
+    "refresh_text_FUCDHV",
+    "before_after_image_tLWdBL",
+    "featured_collection_ykrrdz",
+    "media_grid_yBXnF9",
+    "press_X4tULf",
+    "featured_collection_brMY49",
+    "banner_figma_9E78mk",
+    "revealed_image_on_scroll_D9PNYA"
+  ]
+}

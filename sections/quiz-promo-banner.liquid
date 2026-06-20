@@ -1,0 +1,167 @@
+<style>
+  .quiz-promo-{{ section.id }} {
+    position: relative;
+    background: {{ section.settings.bg_color | default: '#f8f5ef' }};
+    border-top: 1px solid #e4ddcf;
+    border-bottom: 1px solid #e4ddcf;
+    padding: {{ section.settings.padding_top | default: 56 }}px 24px {{ section.settings.padding_bottom | default: 56 }}px;
+  }
+  .quiz-promo-inner-{{ section.id }} {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Jost', sans-serif;
+  }
+  .quiz-promo-eyebrow-{{ section.id }} {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: #bca06a;
+  }
+  .quiz-promo-heading-{{ section.id }} {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.18;
+    color: #2c2723;
+    margin: 14px 0 12px;
+  }
+  .quiz-promo-heading-{{ section.id }} em {
+    font-style: italic;
+    color: #a4884d;
+  }
+  .quiz-promo-text-{{ section.id }} {
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #8a8073;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .quiz-promo-features-{{ section.id }} {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin: 24px 0 0;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: #8a8073;
+  }
+  .quiz-promo-features-{{ section.id }} span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .quiz-promo-features-{{ section.id }} span::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #c0a463;
+    display: inline-block;
+  }
+  .quiz-promo-btn-{{ section.id }} {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #fdfbf7;
+    background: #a4884d;
+    border: none;
+    padding: 17px 42px;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: background .15s ease;
+  }
+  .quiz-promo-btn-{{ section.id }}:hover {
+    background: #94793f;
+  }
+  @media screen and (max-width: 749px) {
+    .quiz-promo-heading-{{ section.id }} { font-size: 27px; }
+  }
+</style>
+
+<div class="quiz-promo-{{ section.id }}">
+  <div class="quiz-promo-inner-{{ section.id }}">
+    <div class="quiz-promo-eyebrow-{{ section.id }}">{{ section.settings.eyebrow | default: 'MÉTODO CH' }}</div>
+    <h2 class="quiz-promo-heading-{{ section.id }}">{{ section.settings.heading | default: 'Ainda não sabe qual kit o seu cabelo <em>precisa</em>?' }}</h2>
+    <p class="quiz-promo-text-{{ section.id }}">{{ section.settings.text | default: 'Faça o nosso Diagnóstico Capilar gratuito e descubra, em menos de 3 minutos, o kit ideal para a sua rotina.' }}</p>
+    <div class="quiz-promo-features-{{ section.id }}">
+      <span>8 perguntas rápidas</span>
+      <span>Resultado personalizado</span>
+      <span>100% gratuito</span>
+    </div>
+    <a href="{{ section.settings.button_url | default: '/pages/diagnostico-capilar' }}" class="quiz-promo-btn-{{ section.id }}">{{ section.settings.button_label | default: 'Fazer o Diagnóstico Capilar' }}</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner Quiz Capilar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Texto superior",
+      "default": "MÉTODO CH"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título (aceita <em> para destaque)",
+      "default": "Ainda não sabe qual kit o seu cabelo <em>precisa</em>?"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto",
+      "default": "Faça o nosso Diagnóstico Capilar gratuito e descubra, em menos de 3 minutos, o kit ideal para a sua rotina."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão",
+      "default": "Fazer o Diagnóstico Capilar"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Link do botão",
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Cor de fundo",
+      "default": "#f8f5ef"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Espaçamento superior",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Espaçamento inferior",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Quiz Capilar"
+    }
+  ]
+}
+{% endschema %}

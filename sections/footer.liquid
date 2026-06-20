@@ -1,0 +1,645 @@
+{%- assign newsletter_block = section.blocks | where: 'type', 'newsletter' | first -%}
+
+{%- if section.blocks.size > 3 -%}
+  <style>
+    @media screen and (min-width: 1000px) {
+      #shopify-section-{{ section.id }} {
+        {%- if newsletter_block != blank -%}
+          --footer-block-list-gap: var(--spacing-10);
+        {%- endif -%}
+
+        --footer-block-list-justify-content: space-between;
+      }
+    }
+  </style>
+{%- endif -%}
+
+<div class="footer">
+  <div class="container">
+    <div class="footer__wrapper">
+      {%- comment -%}
+        ------------------------------------------------------------------------------------------------------------------
+        BLOCK AREA
+        ------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="footer__block-list empty:hidden">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'text' -%}
+                {%- if block.settings.title != blank
+                  or block.settings.content != blank
+                  or shop.features.follow_on_shop?
+                  and block.settings.enable_follow_on_shop
+                -%}
+                  <div class="footer__block footer__block--text" {{ block.shopify_attributes }}>
+                    {%- if block.settings.title != blank -%}
+                      <p class="bold">{{ block.settings.title | escape }}</p>
+                    {%- endif -%}
+
+                    {%- if block.settings.content != blank -%}
+                      <div class="prose text-subdued">
+                        {{- block.settings.content -}}
+                      </div>
+                    {%- endif -%}
+
+                    {%- if shop.features.follow_on_shop? and block.settings.enable_follow_on_shop -%}
+                      <div class="follow-on-shop">
+                        {{- shop | login_button: action: 'follow' -}}
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+              {%- when 'links' -%}
+                {%- if block.settings.menu != blank -%}
+                  <div class="footer__block footer__block--menu" {{ block.shopify_attributes }}>
+                    {%- if block.settings.show_menu_title -%}
+                      <p class="bold">{{ block.settings.menu.title }}</p>
+                    {%- endif -%}
+
+                    <ul class="v-stack gap-3" role="list">
+                      {%- for link in block.settings.menu.links -%}
+                        <li>
+                          <a href="{{ link.url }}" class="inline-block link-faded break-all">{{ link.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+
+              {%- when 'newsletter' -%}
+                <div class="footer__block footer__block--newsletter" {{ block.shopify_attributes }}>
+                  {%- if block.settings.image != blank -%}
+                    {%- capture sizes -%}{{ block.settings.image_width }}px{%- endcapture -%}
+                    {%- capture widths -%}{{ block.settings.image_width }}, {{ block.settings.image_width | times: 2 | at_most: block.settings.image.width }}{%- endcapture -%}
+                    {%- capture style -%}max-width: {{ block.settings.image_width }}px{%- endcapture -%}
+                    {{-
+                      block.settings.image
+                      | image_url: width: block.settings.image.width
+                      | image_tag: loading: 'lazy', style: style, sizes: sizes, widths: widths
+                    -}}
+                  {%- endif -%}
+
+                  <div class="v-stack gap-6">
+                    {%- if block.settings.title != blank -%}
+                      <p class="{{ block.settings.heading_size }}">{{- block.settings.title | escape -}}</p>
+                    {%- endif -%}
+
+                    {%- if block.settings.content != blank -%}
+                      <div class="prose text-subdued">
+                        {{- block.settings.content -}}
+                      </div>
+                    {%- endif -%}
+
+                    {%- form 'customer', id: 'footer-newsletter', class: 'footer__newsletter-form form' -%}
+                      {%- if form.posted_successfully? -%}
+                        {%- capture success_message -%}{{ 'general.newsletter.subscribed_successfully' | t }}{%- endcapture -%}
+                        {%- render 'banner', content: success_message, status: 'success' -%}
+                      {%- else -%}
+                        {%- if form.errors -%}
+                          {%- capture error_message -%}{{ form.errors.translated_fields['email'] }} {{ form.errors.messages['email'] }}{%- endcapture -%}
+                          {%- render 'banner', content: error_message, status: 'error' -%}
+                        {%- endif -%}
+
+                        <input type="hidden" name="contact[tags]" value="newsletter">
+
+                        {%- capture label -%}{{ 'general.newsletter.email' | t }}{%- endcapture -%}
+                        {%- render 'input',
+                          name: 'contact[email]',
+                          label: label,
+                          type: 'email',
+                          required: true,
+                          autocomplete: 'email',
+                          enterkeyhint: 'send',
+                          self_submit: true
+                        -%}
+                      {%- endif -%}
+                    {%- endform -%}
+                  </div>
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- comment -%}
+        ------------------------------------------------------------------------------------------------------------------
+        SECONDARY AREA
+        ------------------------------------------------------------------------------------------------------------------
+      {%- endcomment -%}
+
+      <div class="footer__aside empty:hidden">
+        {%- comment -%}
+          ----------------------------------------------------------------------------------------------------------------
+          SOCIAL MEDIA + LOCALIZATION
+          ----------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+
+        {%- if section.settings.show_social_media -%}
+          {%- capture social_media -%}{%- render 'social-media' -%}{%- endcapture -%}
+        {%- endif -%}
+
+        {%- if section.settings.show_country_selector and localization.available_countries.size > 1 -%}
+          {%- assign country_selector = true -%}
+        {%- endif -%}
+
+        {%- if section.settings.show_locale_selector and localization.available_languages.size > 1 -%}
+          {%- assign locale_selector = true -%}
+        {%- endif -%}
+
+        {%- if social_media != blank or country_selector or locale_selector -%}
+          <div class="footer__aside-top">
+            {{- social_media -}}
+
+            {%- if country_selector or locale_selector -%}
+              <div class="h-stack gap-6">
+                {%- if social_media == blank -%}
+                  {%- assign popover_horizontal_position = 'start' -%}
+                {%- else -%}
+                  {%- assign popover_horizontal_position = 'end' -%}
+                {%- endif -%}
+
+                {%- if country_selector -%}
+                  {%- render 'localization-selector',
+                    type: 'country',
+                    show_country_name: section.settings.show_country_name,
+                    show_country_flag: section.settings.show_country_flag,
+                    popover_horizontal_position: popover_horizontal_position
+                  -%}
+                {%- endif -%}
+
+                {%- if locale_selector -%}
+                  {%- render 'localization-selector',
+                    type: 'locale',
+                    popover_horizontal_position: popover_horizontal_position
+                  -%}
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- comment -%}
+          ----------------------------------------------------------------------------------------------------------------
+          COPYRIGHT
+          ----------------------------------------------------------------------------------------------------------------
+        {%- endcomment -%}
+      </div>
+    </div>
+
+    <div
+      class="footer__additional-container"
+      style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 50px; gap: 50px;">
+
+      {%- if section.settings.show_security_icons_black %}
+        <style>.text-x {color:black;}</style>
+        <div class="footer__security-title footer_section" style="width: 270px;">
+          <div class="v-stack gap-2">
+            <span class="text-x">Segurança e Qualidade</span>
+
+            <div class="h-stack gap-2 wrap justify-center">
+              <div
+                class="footer__security-quality"
+                style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px;"
+              >
+                 <a href="https://www.sslshopper.com/ssl-checker.html#hostname={{ section.settings.selo1 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0706/7467/7999/files/NORTON_31e89418-b0b8-43f0-9557-7631f10107ed.png?v=1720012327
+                    alt="Norton Secured"
+                    style="width: 277px; height:36px; "
+                    loading="lazy"
+                  >
+                </a>
+                 <a href="https://www.reclameaqui.com.br/{{ section.settings.selo2 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0706/7467/7999/files/RECLAMEAQUI_927c989f-296d-42b4-bbe6-a6f0289c0c82.png?v=1720012327"
+                    alt="Reclame Aqui"
+                    style="width: 250px; height:20px;"
+                    loading="lazy"
+                  >
+                </a>
+                  <a href="https://transparencyreport.google.com/safe-browsing/search?url={{ section.settings.selo3 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0706/7467/7999/files/GOOGLE_3d6435b4-bb6b-4d5f-991b-076bf9440d60.png?v=1720012327"
+                    alt="Google Seguro"
+                    style="width: 277px; height:36px;"
+                    loading="lazy"
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {%- if section.settings.show_security_icons_white %}
+        <style>.text-x {color:white;}</style>
+        <div class="footer__security-title footer_section" style="width: 270px;">
+          <div class="v-stack gap-2">
+            <span class="text-x">Segurança e Qualidade</span>
+
+            <div class="h-stack gap-2 wrap justify-center">
+              <div class="footer__security-quality" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px;">
+                <a href="https://www.sslshopper.com/ssl-checker.html#hostname={{ section.settings.selo1 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0655/0696/7773/files/NORTON_RBANCO.png?v=1675262979"
+                    alt="Norton Secured"
+                    style="width: 277px; height:36px; "
+                    loading="lazy"
+                  >
+                </a>
+                <a href="https://www.reclameaqui.com.br/{{ section.settings.selo2 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0655/0696/7773/files/RECLAMEAQUI_RBANCO.png?v=1675262979"
+                    alt="Reclame Aqui"
+                    style="width: 250px; height:20px;"
+                    loading="lazy"
+                  >
+                </a>
+                <a href="https://transparencyreport.google.com/safe-browsing/search?url={{ section.settings.selo3 }}">
+                  <img
+                    src="https://cdn.shopify.com/s/files/1/0655/0696/7773/files/GOOGLE_BRANCO.png?v=1675262980"
+                    alt="Google Seguro"
+                    style="width: 277px; height:36px;"
+                    loading="lazy"
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+        <div class="footer__payment-methods footer_section" style="width: ;">
+          <div class="v-stack gap-2">
+            <span class="text-x">{{ 'cart.general.we_accept' | t }}</span>
+
+            <div class="h-stack gap-2 wrap justify-center we-accept">
+              {% assign payment_mode = settings.payment_mode %}
+              
+
+{% if payment_mode == 'external' %}
+    <img src="{{ 'visa.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'mastercard.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'card-3.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'amex.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'discover.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'elo.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'hipercard.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    <img src="{{ 'pix.svg' | asset_url }}" alt="Cartão de Crédito" style="width: 50px; height: 32.5px;" loading="lazy">
+    {% if settings.show_ticket %}
+      <img src="{{ 'boleto.svg' | asset_url }}" alt="Boleto" style="width: 50px; height: 32.5px;" loading="lazy">
+    {% endif %}
+{% elsif payment_mode == 'shopify' %}
+    {%- for type in shop.enabled_payment_types -%}
+      {{- type | payment_type_svg_tag -}}
+    {%- endfor -%}
+{% endif %}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.show_ship_icons_white %}
+        <div class="footer__shipping-methods-title footer_section" style="width: 290px;">
+          <div class="v-stack gap-2">
+            <span class="text-x">Formas de envio</span>
+
+            <div class="h-stack gap-2 wrap justify-center">
+              <div
+                class="footer__shipping-methods"
+                style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px;"
+              >
+                <img
+                  src="{{ 'cor_w.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+                <img
+                  src="{{ 'sedex_w.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+                <img
+                  src="{{ 'pac_w.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+       {%- if section.settings.show_ship_icons_black %}
+        <div class="footer__shipping-methods-title footer_section" style="width: 290px;">
+          <div class="v-stack gap-2">
+            <span class="text-x">Formas de envio</span>
+
+            <div class="h-stack gap-2 wrap justify-center">
+              <div
+                class="footer__shipping-methods"
+                style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px;"
+              >
+                <img
+                  src="{{ 'cor_b.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+                <img
+                  src="{{ 'sedex_b.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+                <img
+                  src="{{ 'pac_b.svg' | asset_url }}"
+                  alt="Cartão de Crédito"
+                  style="width: 90px; height: 22px;"
+                  loading="lazy"
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+<footer class="{% if section.settings.footer_background_color == 'dark' %}footer-dark{% else %}footer-light{% endif %}" style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center;">
+  <div class="footer" style="background-color: {{ settings.footer_background }}; width: 100%; padding: 0;">
+    <hr class="sub-footer-separator">
+    <div class="container sub-footer">
+      <a href="https://anova.ag/?utm_source=referencia&utm_medium=rodape-cliente&utm_campaign=clinichair" target="_blank" class="sub-footer__infos" style="text-decoration: none;">
+        <span style="color: {% if section.settings.logo_tone_sub_footer == 'white' %}#FFFFFF{% else %}#000000{% endif %}; display: flex; align-items: center; gap: 8px; white-space: nowrap;">
+          Desenvolvido por
+          
+          <img src="https://cdn.shopify.com/s/files/1/0703/8127/3141/files/Logo_Anova_branco.svg?v=1772466051" alt="Logo Anova" style="max-width: 80px; height: auto;">
+        </span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<style>
+  .logo-container {
+  text-align: center;
+}
+
+.logo-container img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+  @media (max-width: 585px) {
+    .footer__additional-container {
+      justify-content: start !important;
+      text-align: center;
+    }
+
+    .footer_section {
+      margin: 0 auto;
+    }
+  }
+
+  .we-accept svg {
+    width: 38px;
+    height: 24px;
+  }
+
+</style>
+              
+
+{% schema %}
+{
+  "name": "Footer",
+  "class": "shopify-section--footer",
+  "tag": "footer",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social_media",
+      "label": "Mostrar redes sociais",
+      "info": "Para configurar as redes sociais, vá para as configurações de suas redes sociais.",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Mostrar ícones de pagamento",
+      "default": true
+    },
+     {
+      "type": "checkbox",
+      "id": "show_ship_icons_black",
+      "label": "Mostrar métodos de envío Preto",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ship_icons_white",
+      "label": "Mostrar métodos de envío Branco",
+      "default": true
+    },
+     {
+      "type": "checkbox",
+      "id": "show_security_icons_white",
+      "label": "Mostrar selos de segurança Branco",
+      "default": true
+    },
+     {
+      "type": "checkbox",
+      "id": "show_security_icons_black",
+      "label": "Mostrar selos de segurança Preto",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "selo1",
+      "label": "SSL Seguro",
+      "info": "Coloque apenas o domínio da sua loja sem usar https://",
+      "default": "LINK AQUI"
+    },
+    {
+      "type": "text",
+      "id": "selo2",
+      "label": "ReclameAqui",
+      "info": "Coloque o slug da sua página no ReclameAqui",
+      "default": "LINK AQUI"
+    },
+    {
+      "type": "text",
+      "id": "selo3",
+      "label": "Google Safe",
+      "info": "Coloque apenas o domínio da sua loja sem usar https://",
+      "default": "LINK AQUI"
+    },
+    {
+      "type": "header",
+      "content": "Logo Tribe" 
+    },
+{
+  "type": "select",
+  "id": "logo_tone_sub_footer",
+  "label": "Tons do logo",
+  "options": [
+    {
+      "value": "black",
+      "label": "Preto"
+    },
+    {
+      "value": "white",
+      "label": "Branco"
+    }
+  ],
+  "default": "white"
+},
+    {
+      "type": "header",
+      "content": "Seletor de país/região",
+      "info": "Para adicionar um país/região, vá para suas [configurações de mercados.](/admin/settings/markets)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_selector",
+      "label": "Mostrar seletor de país/região",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_flag",
+      "label": "Mostrar bandeira do país",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_country_name",
+      "label": "Mostrar nome do país",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Seletor de idioma",
+      "info": "Para adicionar um idioma, vá para suas [configurações de idiomas.](/admin/settings/languages)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_locale_selector",
+      "label": "Mostrar seletor de idioma",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Texto",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Sobre nossa loja"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Conteúdo",
+          "default": "<p>Use esta área de texto para contar aos seus clientes sobre sua marca e visão. Você pode alterá-la no editor de temas.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_follow_on_shop",
+          "label": "Mostrar Seguir na Loja",
+          "info": "Para permitir que os clientes sigam sua loja no aplicativo Shop a partir de sua loja online, o Shop Pay deve estar ativado. [Saiba mais](https://help.shopify.com/manual/online-store/themes/customizing-themes/follow-on-shop)",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "links",
+      "name": "Links",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "Este menu não mostrará itens de menu suspenso.",
+          "default": "footer"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_menu_title",
+          "label": "Mostrar título do menu",
+          "default": true
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Os clientes que se inscreverem terão seu endereço de e-mail adicionado à lista de clientes que \"aceitam marketing\" [lista de clientes](/admin/customers?query=&accepts_marketing=1)."
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagem",
+          "info": "Recomendado 600 x 600px .png"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "min": 50,
+          "max": 300,
+          "step": 10,
+          "unit": "px",
+          "label": "Largura da imagem",
+          "default": 150
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "Tamanho do título",
+          "options": [
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            }
+          ],
+          "default": "h3"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Inscreva-se em nossa newsletter"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Conteúdo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
