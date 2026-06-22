@@ -408,7 +408,12 @@
 
       if (ctaEl) {
         ctaEl.textContent = r.cta;
-        ctaEl.setAttribute('href', ctaUrls[key] || '/collections/all');
+        // CTA goes to plan screen; product link is on the assin button in plan screen
+        ctaEl.onclick = function(e) {
+          e.preventDefault();
+          renderPlan();
+          showScreen('plan');
+        };
       }
     }
 
@@ -475,13 +480,6 @@
           renderQuestion();
           updateContinue();
         }
-      });
-    }
-
-    if (planBtn) {
-      planBtn.addEventListener('click', function () {
-        renderPlan();
-        showScreen('plan');
       });
     }
 
