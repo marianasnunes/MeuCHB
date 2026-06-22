@@ -6,13 +6,16 @@
 
 {%- if page.handle == 'diagnostico-capilar' -%}
   {{ 'quiz-capilar.css' | asset_url | stylesheet_tag }}
-  <div class="quiz-dc-wrap" id="quiz-dc-{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="quiz-dc-wrap" id="quiz-dc-page-{{ section.id }}" data-section-id="{{ section.id }}">
+
     <header class="quiz-dc-header">
       <div class="quiz-dc-eyebrow">MEUCHB.COM.BR · MÉTODO CH</div>
       <h1 class="quiz-dc-h1">Diagnóstico <em>Capilar</em></h1>
-      <div class="quiz-dc-sub">Responda 8 perguntas e descubra qual kit foi feito para o seu cabelo.</div>
+      <div class="quiz-dc-sub">Responda 7 perguntas e descubra qual kit foi feito para o seu cabelo.</div>
     </header>
+
     <main class="quiz-dc-main">
+
       <!-- INTRO -->
       <div class="quiz-dc-screen quiz-dc-intro" data-screen="intro">
         <div class="quiz-dc-card quiz-dc-card--intro">
@@ -21,13 +24,14 @@
           <p class="quiz-dc-intro-p">Em menos de 3 minutos, vamos entender o estado atual do seu fio e indicar o kit CH ideal para a sua rotina.</p>
           <div class="quiz-dc-dots"><span></span><span></span><span></span></div>
           <div class="quiz-dc-features">
-            <span><i></i>8 perguntas</span>
+            <span><i></i>7 perguntas</span>
             <span><i></i>Resultado personalizado</span>
             <span><i></i>Método CH validado</span>
           </div>
           <button type="button" class="quiz-dc-btn quiz-dc-start">Começar Diagnóstico</button>
         </div>
       </div>
+
       <!-- QUESTION -->
       <div class="quiz-dc-screen quiz-dc-question" data-screen="question" hidden>
         <div class="quiz-dc-qwrap">
@@ -35,7 +39,9 @@
             <span class="quiz-dc-qlabel-sm"></span>
             <span class="quiz-dc-percent"></span>
           </div>
-          <div class="quiz-dc-progress-track"><div class="quiz-dc-progress-fill"></div></div>
+          <div class="quiz-dc-progress-track">
+            <div class="quiz-dc-progress-fill"></div>
+          </div>
           <div class="quiz-dc-card">
             <div class="quiz-dc-eyebrow quiz-dc-qlabel"></div>
             <h3 class="quiz-dc-qtitle"></h3>
@@ -47,6 +53,7 @@
           </div>
         </div>
       </div>
+
       <!-- RESULT -->
       <div class="quiz-dc-screen quiz-dc-result" data-screen="result" hidden>
         <div class="quiz-dc-card quiz-dc-card--result">
@@ -65,18 +72,71 @@
             </div>
           </div>
           <a href="#" class="quiz-dc-btn quiz-dc-cta" target="_self" rel="noopener"></a>
+          <div class="quiz-dc-plan-note">Monte sua assinatura mensal com desconto →</div>
+          <button type="button" class="quiz-dc-btn quiz-dc-btn--secondary quiz-dc-plan-btn">Ver meu plano de assinatura</button>
           <div class="quiz-dc-domain">meuchb.com.br</div>
           <div class="quiz-dc-restart" role="button" tabindex="0">↻ Refazer o diagnóstico</div>
         </div>
       </div>
+
+      <!-- PLAN / ASSINATURA -->
+      <div class="quiz-dc-screen quiz-dc-plan" data-screen="plan" hidden>
+        <div class="quiz-dc-plan-wrap">
+          <div class="quiz-dc-back" role="button" tabindex="0">← Voltar ao resultado</div>
+          <div class="quiz-dc-card quiz-dc-card--plan">
+            <div class="quiz-dc-plan-hero">
+              <div class="quiz-dc-eyebrow">Assinatura Mensal · Método CH</div>
+              <h2 class="quiz-dc-h2">Faça a sua assinatura mensal e receba seu tratamento ideal <em>com desconto</em></h2>
+              <div class="quiz-dc-plan-profile"></div>
+              <p class="quiz-dc-plan-intro"></p>
+            </div>
+            <div class="quiz-dc-pricing-strip">
+              <div class="quiz-dc-pricing-main">
+                <div class="quiz-dc-pricing-label">Assinante paga</div>
+                <div class="quiz-dc-pricing-val">
+                  R$ 719<span class="quiz-dc-pricing-freq">/mês</span>
+                  <span class="quiz-dc-pricing-old">R$ 816</span>
+                </div>
+              </div>
+              <div class="quiz-dc-pricing-div"></div>
+              <ul class="quiz-dc-pricing-perks">
+                <li>Desconto exclusivo de assinante</li>
+                <li>+8% no PIX · em até 12x</li>
+                <li>Cancele quando quiser</li>
+              </ul>
+            </div>
+            <div class="quiz-dc-plan-section">
+              <div class="quiz-dc-plan-section-head">
+                <h3 class="quiz-dc-plan-section-title">Seus 6 primeiros meses de tratamento</h3>
+                <span class="quiz-dc-plan-section-sub">Um kit personalizado todo mês na sua casa</span>
+              </div>
+              <div class="quiz-dc-months"></div>
+            </div>
+            <div class="quiz-dc-box">
+              <div class="quiz-dc-box-num">Mês&nbsp;7+<span>Box de manutenção</span></div>
+              <div class="quiz-dc-box-div"></div>
+              <div class="quiz-dc-box-body">
+                <p class="quiz-dc-box-desc">A partir do 7º mês você passa a receber, todo mês, um box de manutenção montado para o seu perfil <strong class="quiz-dc-box-profile"></strong>:</p>
+                <div class="quiz-dc-box-items"></div>
+              </div>
+            </div>
+            <div class="quiz-dc-plan-cta">
+              <a href="#" class="quiz-dc-btn quiz-dc-assin-btn" target="_self" rel="noopener">Assinar agora com desconto</a>
+              <div class="quiz-dc-plan-cta-note">Frete grátis acima de R$400 · Cancele quando quiser</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </main>
   </div>
+
   <script src="{{ 'quiz-capilar.js' | asset_url }}" defer></script>
   <script>
     (function () {
       function boot() {
         if (window.QuizCapilarInit) {
-          window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
+          window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), {
             ctaUrls: {
               queda:        '/products/cronograma-capilar',
               reconstrucao: '/products/kit-reconstrucao-diamond',
@@ -87,7 +147,7 @@
           });
         } else {
           document.addEventListener('DOMContentLoaded', function () {
-            window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
+            window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), {
               ctaUrls: {
                 queda:        '/products/cronograma-capilar',
                 reconstrucao: '/products/kit-reconstrucao-diamond',
@@ -132,26 +192,11 @@
       "id": "content_width",
       "label": "Largura do conteúdo",
       "options": [
-        {
-          "value": "60ch",
-          "label": "Pequeno"
-        },
-        {
-          "value": "80ch",
-          "label": "Médio"
-        },
-        {
-          "value": "100ch",
-          "label": "Grande"
-        },
-        {
-          "value": "120ch",
-          "label": "Extra grande"
-        },
-        {
-          "value": "100%",
-          "label": "Largura total"
-        }
+        { "value": "60ch",  "label": "Pequeno" },
+        { "value": "80ch",  "label": "Médio" },
+        { "value": "100ch", "label": "Grande" },
+        { "value": "120ch", "label": "Extra grande" },
+        { "value": "100%",  "label": "Largura total" }
       ],
       "default": "80ch"
     }

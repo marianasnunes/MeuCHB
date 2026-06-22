@@ -6,21 +6,21 @@
       title: 'Como está o seu cabelo no dia seguinte à lavagem?',
       help: 'Pense no aspecto geral, sem nenhum produto de finalização.',
       options: [
-        { tag: 'seco', label: 'Fica opaco e ressecado', desc: 'Embaraça fácil, parece áspero ao toque', score: { hidratacao: 3 } },
-        { tag: 'oleoso', label: 'Fica oleoso na raiz', desc: 'Parece sujo mesmo tendo lavado no dia anterior', score: { nutricao: 2 } },
-        { tag: 'frizz', label: 'Fica frisado e volumoso', desc: 'A umidade ou o tempo seco muda tudo no visual', score: { hidratacao: 2 } },
-        { tag: 'opaco', label: 'Fica normal, mas sem brilho', desc: 'Sem queixas extremas, mas falta aquela vitalidade', score: { hidratacao: 2 } },
-        { tag: 'quebradico', label: 'Fica quebradiço, com pontas abertas', desc: 'Percebo fios partindo com facilidade', score: { reconstrucao: 3 } }
+        { tag:'seco',       label:'Fica opaco e ressecado',              desc:'Embaraça fácil, parece áspero ao toque',            score:{hidratacao:3} },
+        { tag:'oleoso',     label:'Fica oleoso na raiz',                 desc:'Parece sujo mesmo tendo lavado no dia anterior',    score:{nutricao:2} },
+        { tag:'frizz',      label:'Fica frisado e volumoso',             desc:'A umidade ou o tempo seco muda tudo no visual',     score:{hidratacao:2} },
+        { tag:'opaco',      label:'Fica normal, mas sem brilho',         desc:'Sem queixas extremas, mas falta aquela vitalidade', score:{hidratacao:2} },
+        { tag:'quebradico', label:'Fica quebradiço, com pontas abertas', desc:'Percebo fios partindo com facilidade',              score:{reconstrucao:3} }
       ]
     },
     {
       title: 'Qual é a estrutura natural do seu fio?',
       help: 'Como o seu cabelo se comporta na maior parte do tempo.',
       options: [
-        { tag: 'liso', label: 'Liso', desc: 'Praticamente sem ondulação natural', score: { nutricao: 1 } },
-        { tag: 'ondulado', label: 'Ondulado', desc: 'Ondas suaves em formato de S', score: {} },
-        { tag: 'cacheado', label: 'Cacheado', desc: 'Cachos definidos e marcados', score: { hidratacao: 1 } },
-        { tag: 'crespo', label: 'Crespo', desc: 'Curvatura fechada e bastante volume', score: { hidratacao: 1 } }
+        { tag:'liso',     label:'Liso',     desc:'Praticamente sem ondulação natural', score:{nutricao:1} },
+        { tag:'ondulado', label:'Ondulado', desc:'Ondas suaves em formato de S',       score:{} },
+        { tag:'cacheado', label:'Cacheado', desc:'Cachos definidos e marcados',        score:{hidratacao:1} },
+        { tag:'crespo',   label:'Crespo',   desc:'Curvatura fechada e bastante volume',score:{hidratacao:1} }
       ]
     },
     {
@@ -28,86 +28,62 @@
       help: 'Pode marcar mais de uma opção, se for o seu caso.',
       multi: true,
       options: [
-        { tag: 'coloracao', label: 'Coloração ou luzes', desc: 'Tintura, mechas ou descoloração', score: { reconstrucao: 3 } },
-        { tag: 'progressiva', label: 'Progressiva ou alisamento', desc: 'Redução de volume com química', score: { reconstrucao: 2 } },
-        { tag: 'relaxamento', label: 'Relaxamento ou permanente', desc: 'Alteração da curvatura natural do fio', score: { reconstrucao: 3 } },
-        { tag: 'nenhum', label: 'Nenhum procedimento', desc: 'Cabelo 100% natural, sem química', score: {} }
-      ]
-    },
-    {
-      title: 'Como está a intensidade da queda hoje?',
-      help: 'Pense na quantidade de fios que você costuma perder por dia.',
-      options: [
-        { tag: 'queda_alta', label: 'Intensa e preocupante', desc: 'Vejo fios no ralo, na escova e na fronha', score: { queda: 5 } },
-        { tag: 'queda_mod', label: 'Moderada', desc: 'Um pouco mais do que eu gostaria', score: { queda: 2 } },
-        { tag: 'queda_nao', label: 'Normal ou mínima', desc: 'Dentro do que considero saudável', score: {} }
+        { tag:'coloracao',   label:'Coloração ou luzes',         desc:'Tintura, mechas ou descoloração',       score:{reconstrucao:3} },
+        { tag:'progressiva', label:'Progressiva ou alisamento',  desc:'Redução de volume com química',         score:{reconstrucao:2} },
+        { tag:'relaxamento', label:'Relaxamento ou permanente',  desc:'Alteração da curvatura natural do fio', score:{reconstrucao:3} },
+        { tag:'nenhum',      label:'Nenhum procedimento',        desc:'Cabelo 100% natural, sem química',      score:{} }
       ]
     },
     {
       title: 'Qual é o principal problema do seu dia a dia?',
       help: 'Aquilo que mais te incomoda quando pensa no seu cabelo.',
       options: [
-        { tag: 'frizz', label: 'Frizz e volume', desc: 'Difícil de controlar no dia a dia', score: { hidratacao: 3 } },
-        { tag: 'seco', label: 'Ressecamento e falta de brilho', desc: 'Fios opacos e sem vida', score: { hidratacao: 3 } },
-        { tag: 'quebra', label: 'Quebra e pontas abertas', desc: 'O fio parte e parece não crescer', score: { reconstrucao: 3 } },
-        { tag: 'couro', label: 'Couro oleoso ou caspa', desc: 'Raiz pesada, oleosa ou com descamação', score: { nutricao: 2 } },
-        { tag: 'queda', label: 'Queda excessiva', desc: 'Perda de fios acima do normal', score: { queda: 5 } }
+        { tag:'frizz',  label:'Frizz e volume',                 desc:'Difícil de controlar no dia a dia',      score:{hidratacao:3} },
+        { tag:'seco',   label:'Ressecamento e falta de brilho', desc:'Fios opacos e sem vida',                 score:{hidratacao:3} },
+        { tag:'quebra', label:'Quebra e pontas abertas',        desc:'O fio parte e parece não crescer',       score:{reconstrucao:3} },
+        { tag:'couro',  label:'Couro oleoso ou caspa',          desc:'Raiz pesada, oleosa ou com descamação',  score:{nutricao:2} }
       ]
     },
     {
       title: 'Como é a sua rotina capilar atual?',
       help: 'O que você costuma fazer hoje pelo seu cabelo.',
       options: [
-        { tag: 'basica', label: 'Só shampoo e condicionador', desc: 'O básico do básico', score: { hidratacao: 1, reconstrucao: 1 } },
-        { tag: 'media', label: 'Shampoo, condicionador e máscara', desc: 'Uma máscara de hidratação de vez em quando', score: {} },
-        { tag: 'avancada', label: 'Cronograma capilar completo', desc: 'Hidratação, nutrição e reconstrução', score: {} },
-        { tag: 'nenhuma', label: 'Não tenho rotina definida', desc: 'Vou usando o que tiver em casa', score: { hidratacao: 1, reconstrucao: 1 } }
+        { tag:'basica',   label:'Só shampoo e condicionador',         desc:'O básico do básico',                         score:{hidratacao:1,reconstrucao:1} },
+        { tag:'media',    label:'Shampoo, condicionador e máscara',   desc:'Uma máscara de hidratação de vez em quando', score:{} },
+        { tag:'avancada', label:'Cronograma capilar completo',        desc:'Hidratação, nutrição e reconstrução',        score:{} },
+        { tag:'nenhuma',  label:'Não tenho rotina definida',          desc:'Vou usando o que tiver em casa',             score:{hidratacao:1,reconstrucao:1} }
       ]
     },
     {
       title: 'Com que frequência você lava o cabelo?',
       help: 'Essa informação nos ajuda a ajustar a sua rotina.',
       options: [
-        { tag: 'diario', label: 'Diariamente', desc: 'Todos os dias ou quase', score: {} },
-        { tag: 'bissemanal', label: '2 a 3 vezes por semana', desc: 'Em dias alternados', score: {} },
-        { tag: 'semanal', label: '1 vez por semana', desc: 'Uma única lavagem semanal', score: {} },
-        { tag: 'quinzenal', label: 'A cada 10 dias ou mais', desc: 'Espaço bastante as lavagens', score: {} }
+        { tag:'diario',      label:'Diariamente',             desc:'Todos os dias ou quase',      score:{} },
+        { tag:'bissemanal',  label:'2 a 3 vezes por semana',  desc:'Em dias alternados',          score:{} },
+        { tag:'semanal',     label:'1 vez por semana',        desc:'Uma única lavagem semanal',   score:{} },
+        { tag:'quinzenal',   label:'A cada 10 dias ou mais',  desc:'Espaço bastante as lavagens', score:{} }
       ]
     },
     {
       title: 'Você usa calor no cabelo?',
       help: 'Secador, chapinha, babyliss e ferramentas térmicas.',
       options: [
-        { tag: 'calor_alto', label: 'Quase todo dia', desc: 'Faz parte da minha rotina', score: { reconstrucao: 2 } },
-        { tag: 'calor_med', label: '2 a 3 vezes por semana', desc: 'Em ocasiões mais específicas', score: { reconstrucao: 1 } },
-        { tag: 'calor_nao', label: 'Raramente ou nunca', desc: 'Deixo secar de forma natural', score: {} }
+        { tag:'calor_alto', label:'Quase todo dia',         desc:'Faz parte da minha rotina',    score:{reconstrucao:2} },
+        { tag:'calor_med',  label:'2 a 3 vezes por semana', desc:'Em ocasiões mais específicas', score:{reconstrucao:1} },
+        { tag:'calor_nao',  label:'Raramente ou nunca',     desc:'Deixo secar de forma natural', score:{} }
       ]
     }
   ];
 
   var RESULTS = {
-    queda: {
-      kit: 'Kit Anti-Queda',
-      tagline: 'Estimulação · Crescimento · Couro saudável',
-      pills: ['QUEDA', 'CRESCIMENTO', 'COURO'],
-      desc: 'A queda está sendo a sua maior preocupação agora. O Kit Anti-Queda do Método CH atua diretamente no couro cabeludo com ativos que estimulam o folículo piloso, reduzem a queda e favorecem o crescimento de novos fios. Pensado para quem percebe fios no ralo, na escova ou na fronha com mais frequência do que gostaria.',
-      cards: [
-        { icon: '🌱', label: 'FOCO', value: 'Estimulação do folículo' },
-        { icon: '🔬', label: 'AÇÃO', value: 'Ativos anti-queda' },
-        { icon: '✨', label: 'RESULTADO', value: 'Crescimento acelerado' }
-      ],
-      tipLead: 'Dica do Método CH:',
-      tipText: 'Aplique o sérum no couro cabeludo seco ou levemente úmido, com massagem circular por 3 a 5 minutos antes da lavagem ou à noite.',
-      cta: 'Quero o Kit Anti-Queda'
-    },
     reconstrucao: {
       kit: 'Kit Reconstrução',
       tagline: 'Força · Queratina · Fim da quebra',
       pills: ['RECONSTRUÇÃO', 'FORÇA', 'QUÍMICA'],
       desc: 'Seu cabelo está pedindo massa e resistência. Procedimentos químicos, calor e quebra deixam o fio poroso e fragilizado. O Kit Reconstrução do Método CH repõe queratina e aminoácidos na fibra capilar, devolvendo força, elasticidade e selando as pontas para frear a quebra.',
       cards: [
-        { icon: '🧱', label: 'FOCO', value: 'Reposição de massa' },
-        { icon: '💪', label: 'AÇÃO', value: 'Queratina + aminoácidos' },
+        { icon: '🧱', label: 'FOCO',      value: 'Reposição de massa' },
+        { icon: '💪', label: 'AÇÃO',      value: 'Queratina + aminoácidos' },
         { icon: '🛡️', label: 'RESULTADO', value: 'Fios mais resistentes' }
       ],
       tipLead: 'Dica do Método CH:',
@@ -120,8 +96,8 @@
       pills: ['HIDRATAÇÃO', 'BRILHO', 'FRIZZ'],
       desc: 'Falta água na fibra capilar. Fios opacos, ressecados e com frizz são sinais clássicos de desidratação. O Kit Hidratação do Método CH repõe água e ativos umectantes que selam a cutícula, controlam o volume indesejado e devolvem maciez e brilho ao cabelo.',
       cards: [
-        { icon: '💧', label: 'FOCO', value: 'Reposição de água' },
-        { icon: '🌿', label: 'AÇÃO', value: 'Ativos umectantes' },
+        { icon: '💧', label: 'FOCO',      value: 'Reposição de água' },
+        { icon: '🌿', label: 'AÇÃO',      value: 'Ativos umectantes' },
         { icon: '✨', label: 'RESULTADO', value: 'Maciez e brilho' }
       ],
       tipLead: 'Dica do Método CH:',
@@ -134,8 +110,8 @@
       pills: ['NUTRIÇÃO', 'MACIEZ', 'LIPÍDIOS'],
       desc: 'Seu fio precisa repor lipídios e óleos naturais. Cabelos com tendência à oleosidade na raiz e ressecamento no comprimento pedem nutrição. O Kit Nutrição do Método CH repõe óleos vegetais que selam a cutícula, equilibram o couro e devolvem nutrição sem pesar nos fios.',
       cards: [
-        { icon: '🥑', label: 'FOCO', value: 'Reposição de lipídios' },
-        { icon: '🫧', label: 'AÇÃO', value: 'Óleos vegetais' },
+        { icon: '🥑', label: 'FOCO',      value: 'Reposição de lipídios' },
+        { icon: '🫧', label: 'AÇÃO',      value: 'Óleos vegetais' },
         { icon: '✨', label: 'RESULTADO', value: 'Fios nutridos' }
       ],
       tipLead: 'Dica do Método CH:',
@@ -148,8 +124,8 @@
       pills: ['RECONSTRUÇÃO', 'HIDRATAÇÃO', 'NUTRIÇÃO'],
       desc: 'Seu cabelo apresenta mais de uma necessidade em equilíbrio. Em vez de focar em um só pilar, o Kit Cronograma Completo do Método CH organiza reconstrução, hidratação e nutrição em uma rotina semanal, tratando o fio de forma completa para recuperar saúde, força e brilho ao mesmo tempo.',
       cards: [
-        { icon: '🔄', label: 'FOCO', value: 'Equilíbrio dos 3 pilares' },
-        { icon: '📅', label: 'AÇÃO', value: 'Cronograma capilar' },
+        { icon: '🔄', label: 'FOCO',      value: 'Equilíbrio dos 3 pilares' },
+        { icon: '📅', label: 'AÇÃO',      value: 'Cronograma capilar' },
         { icon: '✨', label: 'RESULTADO', value: 'Cabelo equilibrado' }
       ],
       tipLead: 'Dica do Método CH:',
@@ -158,43 +134,110 @@
     }
   };
 
-  var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+  var TREATMENTS = {
+    vitaminas: { name: 'Choque de Vitaminas',   pillar: 'Hidratação',   color: '#2f7d7a', bg: '#e6f1f0' },
+    balm:      { name: 'Balm Antiporosidade',   pillar: 'Nutrição',     color: '#a9713f', bg: '#f5ebe1' },
+    amino:     { name: 'Choque de Aminoácidos', pillar: 'Reconstrução', color: '#7c5a86', bg: '#efe8f2' },
+    rotativo:  { name: 'Tratamento Rotativo (Vitaminas · Antiporosidade · Aminoácidos)', pillar: 'Cronograma', color: '#a4884d', bg: '#f4ecdb' }
+  };
 
-  function computeResult(answers) {
-    var sc = { reconstrucao: 0, hidratacao: 0, nutricao: 0, queda: 0 };
+  var ROUTINES = {
+    hidratacao: {
+      profile: 'Hidratação',
+      intro: 'Montamos um cronograma de 6 meses focado em repor água na fibra, controlar o frizz e devolver brilho — com pontos de nutrição e força para manter o equilíbrio.',
+      base: 'Shampoo · Condicionador · Diamond',
+      months: [
+        { focus: 'Hidratação intensiva',    treat: 'vitaminas' },
+        { focus: 'Hidratação & brilho',     treat: 'vitaminas' },
+        { focus: 'Equilíbrio com nutrição', treat: 'balm' },
+        { focus: 'Hidratação profunda',     treat: 'vitaminas' },
+        { focus: 'Força e resistência',     treat: 'amino' },
+        { focus: 'Selagem & manutenção',    treat: 'vitaminas' }
+      ],
+      boxTreat: 'vitaminas'
+    },
+    nutricao: {
+      profile: 'Nutrição',
+      intro: 'Seu cronograma de 6 meses repõe lipídios e óleos naturais para selar a cutícula e equilibrar o couro — com hidratação e força intercaladas.',
+      base: 'Shampoo · Condicionador · Diamond',
+      months: [
+        { focus: 'Nutrição intensiva',        treat: 'balm' },
+        { focus: 'Nutrição & maciez',         treat: 'balm' },
+        { focus: 'Equilíbrio com hidratação', treat: 'vitaminas' },
+        { focus: 'Nutrição profunda',         treat: 'balm' },
+        { focus: 'Força e resistência',       treat: 'amino' },
+        { focus: 'Selagem & manutenção',      treat: 'balm' }
+      ],
+      boxTreat: 'balm'
+    },
+    reconstrucao: {
+      profile: 'Reconstrução',
+      intro: 'Seu cronograma de 6 meses repõe massa e queratina para frear a quebra — sempre intercalando hidratação para não deixar o fio rígido.',
+      base: 'Shampoo · Condicionador · Diamond',
+      months: [
+        { focus: 'Reconstrução & força',    treat: 'amino' },
+        { focus: 'Hidratação (reposição)',  treat: 'vitaminas' },
+        { focus: 'Reconstrução profunda',   treat: 'amino' },
+        { focus: 'Equilíbrio com nutrição', treat: 'balm' },
+        { focus: 'Reconstrução & selagem',  treat: 'amino' },
+        { focus: 'Hidratação & manutenção', treat: 'vitaminas' }
+      ],
+      boxTreat: 'amino'
+    },
+    cronograma: {
+      profile: 'Cronograma Completo',
+      intro: 'Seu cronograma de 6 meses equilibra os três pilares — hidratação, nutrição e reconstrução — alternando os tratamentos a cada mês para um fio completo.',
+      base: 'Shampoo · Condicionador · Diamond',
+      months: [
+        { focus: 'Hidratação',   treat: 'vitaminas' },
+        { focus: 'Nutrição',     treat: 'balm' },
+        { focus: 'Reconstrução', treat: 'amino' },
+        { focus: 'Hidratação',   treat: 'vitaminas' },
+        { focus: 'Nutrição',     treat: 'balm' },
+        { focus: 'Reconstrução', treat: 'amino' }
+      ],
+      boxTreat: 'rotativo'
+    }
+  };
+
+  function compute(answers) {
+    var sc = { reconstrucao: 0, hidratacao: 0, nutricao: 0 };
     QUESTIONS.forEach(function (q, i) {
       var a = answers[i];
       if (a == null) return;
       var tags = Array.isArray(a) ? a : [a];
       tags.forEach(function (tag) {
-        var opt = null;
-        for (var k = 0; k < q.options.length; k++) {
-          if (q.options[k].tag === tag) { opt = q.options[k]; break; }
-        }
+        var opt = q.options.find(function (o) { return o.tag === tag; });
         if (opt && opt.score) {
-          for (var key in opt.score) {
-            if (Object.prototype.hasOwnProperty.call(opt.score, key)) {
-              sc[key] += opt.score[key];
-            }
-          }
+          for (var k in opt.score) sc[k] += opt.score[k];
         }
       });
     });
-    if (sc.queda >= 5) return 'queda';
     var trio = [
       ['reconstrucao', sc.reconstrucao],
-      ['hidratacao', sc.hidratacao],
-      ['nutricao', sc.nutricao]
+      ['hidratacao',   sc.hidratacao],
+      ['nutricao',     sc.nutricao]
     ].sort(function (a, b) { return b[1] - a[1]; });
     if (trio[0][1] >= 5 && trio[1][1] >= 4) return 'cronograma';
     return trio[0][0];
   }
 
-  function el(tag, className, html) {
-    var node = document.createElement(tag);
-    if (className) node.className = className;
-    if (html != null) node.innerHTML = html;
-    return node;
+  function el(tag, attrs, children) {
+    var e = document.createElement(tag);
+    for (var k in (attrs || {})) {
+      if (k === 'style' && typeof attrs[k] === 'object') {
+        Object.assign(e.style, attrs[k]);
+      } else if (k.startsWith('on')) {
+        e.addEventListener(k.slice(2), attrs[k]);
+      } else {
+        e.setAttribute(k, attrs[k]);
+      }
+    }
+    (children || []).forEach(function (c) {
+      if (typeof c === 'string') e.insertAdjacentHTML('beforeend', c);
+      else if (c) e.appendChild(c);
+    });
+    return e;
   }
 
   function initQuiz(root, opts) {
@@ -204,188 +247,268 @@
     opts = opts || {};
     var ctaUrls = opts.ctaUrls || {};
 
-    var state = { screen: 'intro', qIndex: 0, answers: {} };
+    var state = { screen: 'intro', qIndex: 0, answers: {}, resultKey: null };
 
     var screens = {
-      intro: root.querySelector('[data-screen="intro"]'),
+      intro:    root.querySelector('[data-screen="intro"]'),
       question: root.querySelector('[data-screen="question"]'),
-      result: root.querySelector('[data-screen="result"]')
+      result:   root.querySelector('[data-screen="result"]'),
+      plan:     root.querySelector('[data-screen="plan"]')
     };
 
-    var startBtn = root.querySelector('.quiz-dc-start');
-    var restartEl = root.querySelector('.quiz-dc-restart');
-    var continueBtn = root.querySelector('.quiz-dc-continue');
-    var optionsWrap = root.querySelector('.quiz-dc-options');
-    var qLabelEl = root.querySelector('.quiz-dc-qlabel');
-    var qLabelSmEl = root.querySelector('.quiz-dc-qlabel-sm');
-    var qTitleEl = root.querySelector('.quiz-dc-qtitle');
-    var qHelpEl = root.querySelector('.quiz-dc-qhelp');
-    var percentEl = root.querySelector('.quiz-dc-percent');
+    var startBtn     = root.querySelector('.quiz-dc-start');
+    var restartEl    = root.querySelector('.quiz-dc-restart');
+    var continueBtn  = root.querySelector('.quiz-dc-continue');
+    var optionsWrap  = root.querySelector('.quiz-dc-options');
+    var qLabelEl     = root.querySelector('.quiz-dc-qlabel');
+    var qLabelSmEl   = root.querySelector('.quiz-dc-qlabel-sm');
+    var qTitleEl     = root.querySelector('.quiz-dc-qtitle');
+    var qHelpEl      = root.querySelector('.quiz-dc-qhelp');
     var progressFill = root.querySelector('.quiz-dc-progress-fill');
-
-    var resultKitEm = root.querySelector('.quiz-dc-result-kit em');
-    var resultTaglineEl = root.querySelector('.quiz-dc-result-tagline');
-    var pillsWrap = root.querySelector('.quiz-dc-pills');
-    var resultDescEl = root.querySelector('.quiz-dc-result-desc');
-    var resultCardsWrap = root.querySelector('.quiz-dc-result-cards');
-    var tipEl = root.querySelector('.quiz-dc-tip');
-    var mesesTextEl = root.querySelector('.quiz-dc-2meses-text');
-    var ctaEl = root.querySelector('.quiz-dc-cta');
+    var percentEl    = root.querySelector('.quiz-dc-percent');
+    var resultKitEl  = root.querySelector('.quiz-dc-result-kit em');
+    var taglineEl    = root.querySelector('.quiz-dc-result-tagline');
+    var pillsEl      = root.querySelector('.quiz-dc-pills');
+    var descEl       = root.querySelector('.quiz-dc-result-desc');
+    var cardsEl      = root.querySelector('.quiz-dc-result-cards');
+    var tipEl        = root.querySelector('.quiz-dc-tip');
+    var mesesTextEl  = root.querySelector('.quiz-dc-2meses-text');
+    var ctaEl        = root.querySelector('.quiz-dc-cta');
+    var planBtn      = root.querySelector('.quiz-dc-plan-btn');
+    var backBtn      = root.querySelector('.quiz-dc-back');
+    var planIntroEl  = root.querySelector('.quiz-dc-plan-intro');
+    var planProfileEl= root.querySelector('.quiz-dc-plan-profile');
+    var planKitEl    = root.querySelector('.quiz-dc-plan-kit');
+    var monthsEl     = root.querySelector('.quiz-dc-months');
+    var boxItemsEl   = root.querySelector('.quiz-dc-box-items');
+    var boxProfileEl = root.querySelector('.quiz-dc-box-profile');
+    var assinBtn     = root.querySelector('.quiz-dc-assin-btn');
 
     function showScreen(name) {
-      Object.keys(screens).forEach(function (key) {
-        if (!screens[key]) return;
-        screens[key].hidden = key !== name;
-      });
+      for (var k in screens) {
+        if (screens[k]) screens[k].hidden = (k !== name);
+      }
+      window.scrollTo(0, 0);
     }
 
     function renderQuestion() {
       var q = QUESTIONS[state.qIndex];
-      var ans = state.answers[state.qIndex];
-      var multi = !!q.multi;
-      var percent = Math.round(((state.qIndex + 1) / QUESTIONS.length) * 100);
+      var total = QUESTIONS.length;
+      var pct = Math.round(((state.qIndex + 1) / total) * 100);
+      var label = 'PERGUNTA ' + (state.qIndex + 1) + ' DE ' + total;
 
-      qLabelEl.textContent = 'PERGUNTA ' + (state.qIndex + 1) + ' DE ' + QUESTIONS.length;
-      qLabelSmEl.textContent = 'PERGUNTA ' + (state.qIndex + 1) + ' DE ' + QUESTIONS.length;
-      qTitleEl.textContent = q.title;
-      qHelpEl.textContent = q.help;
-      percentEl.textContent = percent + '%';
-      progressFill.style.width = percent + '%';
+      if (qLabelEl)   qLabelEl.textContent   = label;
+      if (qLabelSmEl) qLabelSmEl.textContent = label;
+      if (qTitleEl)   qTitleEl.textContent   = q.title;
+      if (qHelpEl)    qHelpEl.textContent    = q.help;
+      if (percentEl)  percentEl.textContent  = pct + '%';
+      if (progressFill) progressFill.style.width = pct + '%';
 
-      optionsWrap.innerHTML = '';
-      q.options.forEach(function (o, idx) {
-        var selected = multi
-          ? (Array.isArray(ans) && ans.indexOf(o.tag) !== -1)
-          : ans === o.tag;
+      if (optionsWrap) {
+        optionsWrap.innerHTML = '';
+        var letters = ['A', 'B', 'C', 'D', 'E'];
+        q.options.forEach(function (opt, idx) {
+          var ans = state.answers[state.qIndex];
+          var isMulti = !!q.multi;
+          var selected = isMulti
+            ? (Array.isArray(ans) && ans.includes(opt.tag))
+            : (ans === opt.tag);
 
-        var row = el('div', 'quiz-dc-opt' + (selected ? ' is-selected' : ''));
-        row.appendChild(el('div', 'quiz-dc-opt-letter', LETTERS[idx]));
-        var textWrap = el('div');
-        textWrap.appendChild(el('div', 'quiz-dc-opt-label', o.label));
-        textWrap.appendChild(el('div', 'quiz-dc-opt-desc', o.desc));
-        row.appendChild(textWrap);
+          var optEl = document.createElement('div');
+          optEl.className = 'quiz-dc-option' + (selected ? ' quiz-dc-option--selected' : '');
+          optEl.setAttribute('role', 'button');
+          optEl.setAttribute('tabindex', '0');
+          optEl.innerHTML =
+            '<span class="quiz-dc-opt-letter">' + letters[idx] + '</span>' +
+            '<span class="quiz-dc-opt-body">' +
+              '<span class="quiz-dc-opt-label">' + opt.label + '</span>' +
+              '<span class="quiz-dc-opt-desc">' + opt.desc + '</span>' +
+            '</span>';
 
-        row.addEventListener('click', function () {
-          selectOption(state.qIndex, o.tag, multi);
+          function doSelect() {
+            var currentAns = state.answers[state.qIndex];
+            if (isMulti) {
+              var arr = Array.isArray(currentAns) ? currentAns.slice() : [];
+              if (opt.tag === 'nenhum') {
+                arr = arr.includes('nenhum') ? [] : ['nenhum'];
+              } else {
+                arr = arr.filter(function (t) { return t !== 'nenhum'; });
+                if (arr.includes(opt.tag)) arr = arr.filter(function (t) { return t !== opt.tag; });
+                else arr.push(opt.tag);
+              }
+              state.answers[state.qIndex] = arr;
+            } else {
+              state.answers[state.qIndex] = opt.tag;
+            }
+            renderQuestion();
+            updateContinue();
+          }
+
+          optEl.addEventListener('click', doSelect);
+          optEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doSelect(); }
+          });
+          optionsWrap.appendChild(optEl);
         });
+      }
+    }
 
-        optionsWrap.appendChild(row);
-      });
-
-      var canContinue = multi
+    function updateContinue() {
+      var ans = state.answers[state.qIndex];
+      var q = QUESTIONS[state.qIndex];
+      var valid = q.multi
         ? (Array.isArray(ans) && ans.length > 0)
         : (ans != null);
-      var isLast = state.qIndex === QUESTIONS.length - 1;
-
-      continueBtn.textContent = isLast ? 'Ver meu resultado' : 'Continuar';
-      continueBtn.disabled = !canContinue;
+      if (continueBtn) {
+        continueBtn.disabled = !valid;
+        var isLast = state.qIndex >= QUESTIONS.length - 1;
+        continueBtn.textContent = isLast ? 'Ver meu resultado' : 'Continuar';
+      }
     }
 
     function renderResult() {
-      var key = computeResult(state.answers);
+      var key = compute(state.answers);
+      state.resultKey = key;
       var r = RESULTS[key];
 
-      resultKitEm.textContent = r.kit;
-      resultTaglineEl.textContent = r.tagline;
-      resultDescEl.textContent = r.desc;
+      if (resultKitEl) resultKitEl.textContent = r.kit;
+      if (taglineEl)   taglineEl.textContent   = r.tagline;
+      if (descEl)      descEl.textContent      = r.desc;
 
-      pillsWrap.innerHTML = '';
-      r.pills.forEach(function (p, i) {
-        var pill = el('span', 'quiz-dc-pill' + (i === 0 ? ' is-active' : ''), p);
-        pillsWrap.appendChild(pill);
-      });
+      if (pillsEl) {
+        pillsEl.innerHTML = '';
+        r.pills.forEach(function (p, i) {
+          var span = document.createElement('span');
+          span.className = 'quiz-dc-pill' + (i === 0 ? ' quiz-dc-pill--active' : '');
+          span.textContent = p;
+          pillsEl.appendChild(span);
+        });
+      }
 
-      resultCardsWrap.innerHTML = '';
-      r.cards.forEach(function (c) {
-        var card = el('div', 'quiz-dc-result-card');
-        card.appendChild(el('div', 'quiz-dc-result-card-icon', c.icon));
-        card.appendChild(el('div', 'quiz-dc-result-card-label', c.label));
-        card.appendChild(el('div', 'quiz-dc-result-card-value', c.value));
-        resultCardsWrap.appendChild(card);
-      });
+      if (cardsEl) {
+        cardsEl.innerHTML = '';
+        r.cards.forEach(function (c) {
+          var div = document.createElement('div');
+          div.className = 'quiz-dc-result-card';
+          div.innerHTML =
+            '<div class="quiz-dc-rc-icon">' + c.icon + '</div>' +
+            '<div class="quiz-dc-rc-label">' + c.label + '</div>' +
+            '<div class="quiz-dc-rc-value">' + c.value + '</div>';
+          cardsEl.appendChild(div);
+        });
+      }
 
-      tipEl.innerHTML = '💡 <strong>' + r.tipLead + '</strong> ' + r.tipText;
+      if (tipEl) {
+        tipEl.innerHTML = '💡 <strong>' + r.tipLead + '</strong> ' + r.tipText;
+      }
 
       if (mesesTextEl) {
         mesesTextEl.innerHTML = 'Use o <strong>' + r.kit + '</strong> por <strong>2 meses</strong> para sentir o resultado completo. Ao final desse período, <strong>refaça este diagnóstico</strong> — o cabelo muda, e o quiz revela a sua necessidade capilar atual para o próximo ciclo.';
       }
 
-      ctaEl.textContent = r.cta;
-      ctaEl.setAttribute('href', ctaUrls[key] || '/collections/all');
-
-      try {
-        if (window.dataLayer) {
-          window.dataLayer.push({ event: 'quiz_diagnostico_capilar_resultado', resultado: key });
-        }
-      } catch (e) {}
+      if (ctaEl) {
+        ctaEl.textContent = r.cta;
+        ctaEl.setAttribute('href', ctaUrls[key] || '/collections/all');
+      }
     }
 
-    function render() {
-      if (state.screen === 'intro') {
-        showScreen('intro');
-      } else if (state.screen === 'question') {
+    function renderPlan() {
+      var key = state.resultKey || compute(state.answers);
+      var r   = RESULTS[key];
+      var ro  = ROUTINES[key];
+
+      if (planIntroEl)  planIntroEl.textContent  = ro.intro;
+      if (planProfileEl) {
+        planProfileEl.innerHTML = 'Seu perfil: <strong>' + ro.profile + '</strong> · ' + r.kit;
+      }
+
+      if (monthsEl) {
+        monthsEl.innerHTML = '';
+        ro.months.forEach(function (m, i) {
+          var tr = TREATMENTS[m.treat];
+          var div = document.createElement('div');
+          div.className = 'quiz-dc-month-card';
+          div.innerHTML =
+            '<div class="quiz-dc-month-num">MÊS ' + (i + 1) + '</div>' +
+            '<div class="quiz-dc-month-focus">' + m.focus + '</div>' +
+            '<div class="quiz-dc-month-base">' + ro.base + '</div>' +
+            '<span class="quiz-dc-month-chip" style="background:' + tr.bg + ';color:' + tr.color + '">+ ' + tr.name + '</span>';
+          monthsEl.appendChild(div);
+        });
+      }
+
+      var boxTr = TREATMENTS[ro.boxTreat];
+      if (boxItemsEl) {
+        boxItemsEl.innerHTML = '';
+        ['Shampoo', 'Condicionador', 'Diamond', boxTr.name].forEach(function (item) {
+          var span = document.createElement('span');
+          span.className = 'quiz-dc-box-item';
+          span.textContent = item;
+          boxItemsEl.appendChild(span);
+        });
+      }
+      if (boxProfileEl) boxProfileEl.textContent = ro.profile;
+
+      if (assinBtn) {
+        assinBtn.setAttribute('href', ctaUrls[key] || '/collections/all');
+      }
+    }
+
+    // ---- Event listeners ----
+    if (startBtn) {
+      startBtn.addEventListener('click', function () {
+        state = { screen: 'question', qIndex: 0, answers: {}, resultKey: null };
         renderQuestion();
+        updateContinue();
         showScreen('question');
-      } else if (state.screen === 'result') {
-        renderResult();
-        showScreen('result');
-      }
-    }
-
-    function start() {
-      state = { screen: 'question', qIndex: 0, answers: {} };
-      render();
-      try {
-        if (window.dataLayer) window.dataLayer.push({ event: 'quiz_diagnostico_capilar_inicio' });
-      } catch (e) {}
-    }
-
-    function restart() {
-      state = { screen: 'intro', qIndex: 0, answers: {} };
-      render();
-    }
-
-    function goNext() {
-      if (state.qIndex >= QUESTIONS.length - 1) {
-        state.screen = 'result';
-      } else {
-        state.qIndex += 1;
-      }
-      render();
-    }
-
-    function selectOption(qIndex, tag, multi) {
-      var answers = state.answers;
-      if (multi) {
-        var arr = Array.isArray(answers[qIndex]) ? answers[qIndex].slice() : [];
-        if (tag === 'nenhum') {
-          arr = arr.indexOf('nenhum') !== -1 ? [] : ['nenhum'];
-        } else {
-          arr = arr.filter(function (t) { return t !== 'nenhum'; });
-          var pos = arr.indexOf(tag);
-          if (pos !== -1) arr.splice(pos, 1);
-          else arr.push(tag);
-        }
-        answers[qIndex] = arr;
-      } else {
-        answers[qIndex] = tag;
-      }
-      renderQuestion();
-    }
-
-    if (startBtn) startBtn.addEventListener('click', start);
-    if (restartEl) {
-      restartEl.addEventListener('click', restart);
-      restartEl.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') restart();
       });
     }
-    if (continueBtn) continueBtn.addEventListener('click', goNext);
 
-    render();
+    if (continueBtn) {
+      continueBtn.addEventListener('click', function () {
+        if (continueBtn.disabled) return;
+        if (state.qIndex >= QUESTIONS.length - 1) {
+          renderResult();
+          showScreen('result');
+        } else {
+          state.qIndex++;
+          renderQuestion();
+          updateContinue();
+        }
+      });
+    }
+
+    if (planBtn) {
+      planBtn.addEventListener('click', function () {
+        renderPlan();
+        showScreen('plan');
+      });
+    }
+
+    if (backBtn) {
+      backBtn.addEventListener('click', function () {
+        showScreen('result');
+      });
+    }
+
+    if (restartEl) {
+      restartEl.addEventListener('click', function () {
+        state = { screen: 'intro', qIndex: 0, answers: {}, resultKey: null };
+        showScreen('intro');
+      });
+      restartEl.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); restartEl.click(); }
+      });
+    }
+
+    try {
+      if (window.dataLayer) {
+        window.dataLayer.push({ event: 'quiz_diagnostico_capilar_start' });
+      }
+    } catch (e) {}
+
+    showScreen('intro');
   }
 
-  window.QuizCapilarInit = function (root, opts) {
-    initQuiz(root, opts);
-  };
+  window.QuizCapilarInit = initQuiz;
 })();

@@ -5,7 +5,7 @@
   <header class="quiz-dc-header">
     <div class="quiz-dc-eyebrow">{{ section.settings.eyebrow | default: 'MEUCHB.COM.BR · MÉTODO CH' }}</div>
     <h1 class="quiz-dc-h1">{{ section.settings.heading | default: 'Diagnóstico <em>Capilar</em>' }}</h1>
-    <div class="quiz-dc-sub">{{ section.settings.subheading | default: 'Responda 8 perguntas e descubra qual kit foi feito para o seu cabelo.' }}</div>
+    <div class="quiz-dc-sub">{{ section.settings.subheading | default: 'Responda 7 perguntas e descubra qual kit foi feito para o seu cabelo.' }}</div>
   </header>
 
   <main class="quiz-dc-main">
@@ -20,7 +20,7 @@
           <span></span><span></span><span></span>
         </div>
         <div class="quiz-dc-features">
-          <span><i></i>8 perguntas</span>
+          <span><i></i>7 perguntas</span>
           <span><i></i>Resultado personalizado</span>
           <span><i></i>Método CH validado</span>
         </div>
@@ -38,14 +38,11 @@
         <div class="quiz-dc-progress-track">
           <div class="quiz-dc-progress-fill"></div>
         </div>
-
         <div class="quiz-dc-card">
           <div class="quiz-dc-eyebrow quiz-dc-qlabel"></div>
           <h3 class="quiz-dc-qtitle"></h3>
           <p class="quiz-dc-qhelp"></p>
-
           <div class="quiz-dc-options"></div>
-
           <div class="quiz-dc-actions">
             <button type="button" class="quiz-dc-btn quiz-dc-continue" disabled>Continuar</button>
           </div>
@@ -59,15 +56,10 @@
         <div class="quiz-dc-eyebrow">Seu diagnóstico está pronto</div>
         <h2 class="quiz-dc-h2 quiz-dc-result-kit">Você precisa do<br><em></em></h2>
         <div class="quiz-dc-result-tagline"></div>
-
         <div class="quiz-dc-pills"></div>
-
         <p class="quiz-dc-result-desc"></p>
-
         <div class="quiz-dc-result-cards"></div>
-
         <div class="quiz-dc-tip"></div>
-
         <div class="quiz-dc-2meses">
           <div class="quiz-dc-2meses-num">2<span>meses</span></div>
           <div class="quiz-dc-2meses-body">
@@ -75,10 +67,72 @@
             <p class="quiz-dc-2meses-text"></p>
           </div>
         </div>
-
         <a href="#" class="quiz-dc-btn quiz-dc-cta" target="_self" rel="noopener"></a>
+        <div class="quiz-dc-plan-note">Monte sua assinatura mensal com desconto →</div>
+        <button type="button" class="quiz-dc-btn quiz-dc-btn--secondary quiz-dc-plan-btn">Ver meu plano de assinatura</button>
         <div class="quiz-dc-domain">meuchb.com.br</div>
         <div class="quiz-dc-restart" role="button" tabindex="0">↻ Refazer o diagnóstico</div>
+      </div>
+    </div>
+
+    <!-- PLAN / ASSINATURA -->
+    <div class="quiz-dc-screen quiz-dc-plan" data-screen="plan" hidden>
+      <div class="quiz-dc-plan-wrap">
+        <div class="quiz-dc-back" role="button" tabindex="0">← Voltar ao resultado</div>
+
+        <div class="quiz-dc-card quiz-dc-card--plan">
+
+          <!-- hero -->
+          <div class="quiz-dc-plan-hero">
+            <div class="quiz-dc-eyebrow">Assinatura Mensal · Método CH</div>
+            <h2 class="quiz-dc-h2">Faça a sua assinatura mensal e receba seu tratamento ideal <em>com desconto</em></h2>
+            <div class="quiz-dc-plan-profile"></div>
+            <p class="quiz-dc-plan-intro"></p>
+          </div>
+
+          <!-- pricing strip -->
+          <div class="quiz-dc-pricing-strip">
+            <div class="quiz-dc-pricing-main">
+              <div class="quiz-dc-pricing-label">Assinante paga</div>
+              <div class="quiz-dc-pricing-val">
+                R$ 719<span class="quiz-dc-pricing-freq">/mês</span>
+                <span class="quiz-dc-pricing-old">R$ 816</span>
+              </div>
+            </div>
+            <div class="quiz-dc-pricing-div"></div>
+            <ul class="quiz-dc-pricing-perks">
+              <li>Desconto exclusivo de assinante</li>
+              <li>+8% no PIX · em até 12x</li>
+              <li>Cancele quando quiser</li>
+            </ul>
+          </div>
+
+          <!-- 6 months -->
+          <div class="quiz-dc-plan-section">
+            <div class="quiz-dc-plan-section-head">
+              <h3 class="quiz-dc-plan-section-title">Seus 6 primeiros meses de tratamento</h3>
+              <span class="quiz-dc-plan-section-sub">Um kit personalizado todo mês na sua casa</span>
+            </div>
+            <div class="quiz-dc-months"></div>
+          </div>
+
+          <!-- recurring box -->
+          <div class="quiz-dc-box">
+            <div class="quiz-dc-box-num">Mês&nbsp;7+<span>Box de manutenção</span></div>
+            <div class="quiz-dc-box-div"></div>
+            <div class="quiz-dc-box-body">
+              <p class="quiz-dc-box-desc">A partir do 7º mês você passa a receber, todo mês, um box de manutenção montado para o seu perfil <strong class="quiz-dc-box-profile"></strong>:</p>
+              <div class="quiz-dc-box-items"></div>
+            </div>
+          </div>
+
+          <!-- CTA assinatura -->
+          <div class="quiz-dc-plan-cta">
+            <a href="#" class="quiz-dc-btn quiz-dc-assin-btn" target="_self" rel="noopener">Assinar agora com desconto</a>
+            <div class="quiz-dc-plan-cta-note">Frete grátis acima de R$400 · Cancele quando quiser</div>
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -92,22 +146,22 @@
       if (window.QuizCapilarInit) {
         window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
           ctaUrls: {
-            queda:       {{ section.settings.url_queda | default: '/collections/all' | json }},
-            reconstrucao: {{ section.settings.url_reconstrucao | default: '/collections/all' | json }},
-            hidratacao:  {{ section.settings.url_hidratacao | default: '/collections/all' | json }},
-            nutricao:    {{ section.settings.url_nutricao | default: '/collections/all' | json }},
-            cronograma:  {{ section.settings.url_cronograma | default: '/collections/all' | json }}
+            queda:        '/products/cronograma-capilar',
+            reconstrucao: '/products/kit-reconstrucao-diamond',
+            hidratacao:   '/products/kit-hidratacao-diamond',
+            nutricao:     '/products/kit-nutricao-diamond',
+            cronograma:   '/products/cronograma-capilar'
           }
         });
       } else {
         document.addEventListener('DOMContentLoaded', function () {
           window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
             ctaUrls: {
-              queda:       {{ section.settings.url_queda | default: '/collections/all' | json }},
-              reconstrucao: {{ section.settings.url_reconstrucao | default: '/collections/all' | json }},
-              hidratacao:  {{ section.settings.url_hidratacao | default: '/collections/all' | json }},
-              nutricao:    {{ section.settings.url_nutricao | default: '/collections/all' | json }},
-              cronograma:  {{ section.settings.url_cronograma | default: '/collections/all' | json }}
+              queda:        '/products/cronograma-capilar',
+              reconstrucao: '/products/kit-reconstrucao-diamond',
+              hidratacao:   '/products/kit-hidratacao-diamond',
+              nutricao:     '/products/kit-nutricao-diamond',
+              cronograma:   '/products/cronograma-capilar'
             }
           });
         });
@@ -141,7 +195,7 @@
       "type": "text",
       "id": "subheading",
       "label": "Subtítulo",
-      "default": "Responda 8 perguntas e descubra qual kit foi feito para o seu cabelo."
+      "default": "Responda 7 perguntas e descubra qual kit foi feito para o seu cabelo."
     },
     {
       "type": "header",
