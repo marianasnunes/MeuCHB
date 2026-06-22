@@ -9,6 +9,9 @@
     name="id"
     value="{{ product.selected_or_first_available_variant.id }}"
   >
+  {%- if product.compare_at_price > product.price -%}
+  <input type="hidden" name="properties[_chb_modo]" value="sub" id="chb-modo-{{ form_id }}">
+  {%- endif -%}
   {%- assign button_disabled = false -%}
   {%- assign button_size = button_size | default: 'xl' -%}
   {%- if product.selected_or_first_available_variant.available -%}

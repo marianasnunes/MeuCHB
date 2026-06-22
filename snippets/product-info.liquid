@@ -976,6 +976,9 @@
       // Installment value
       var iv=document.querySelector('.chb-inst-val');
       if(iv) iv.textContent=numBR(isSub?subInst:fullInst);
+      // Hidden mode property for cart detection
+      var modoInput=document.getElementById('chb-modo-{{ product_form_id }}');
+      if(modoInput) modoInput.value=isSub?'sub':'unico';
     }
 
     sel.querySelectorAll('.chb-sel-card').forEach(function(card){

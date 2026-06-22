@@ -1,7 +1,7 @@
 {%- assign chb_has_sub = false -%}
 {%- assign chb_monthly_price = 0 -%}
 {%- for item in cart.items -%}
-  {%- if item.product.compare_at_price > item.product.price -%}
+  {%- if item.properties['_chb_modo'] == 'sub' -%}
     {%- assign chb_has_sub = true -%}
     {%- assign chb_monthly_price = item.final_price -%}
   {%- endif -%}
