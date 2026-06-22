@@ -1,3 +1,11 @@
+{%- assign chb_has_sub = false -%}
+{%- assign chb_monthly_price = 0 -%}
+{%- for item in cart.items -%}
+  {%- if item.compare_at_price > item.final_price -%}
+    {%- assign chb_has_sub = true -%}
+    {%- assign chb_monthly_price = item.final_price -%}
+  {%- endif -%}
+{%- endfor -%}
 <div class="container">
   {%- if cart.item_count == 0 -%}
     <div class="empty-state">
@@ -78,6 +86,9 @@
                     {%- render block -%}
                   {%- when 'totals' -%}
                     <div class="cart-form__totals v-stack gap-2" {{ block.shopify_attributes }}>
+                      {%- if chb_has_sub -%}
+                        <div class="chb-cart-sub-header">&#x21BB; Pedido por assinatura mensal &nbsp;&middot;&nbsp; Entrega e cobran&ccedil;a recorrentes</div>
+                      {%- endif -%}
                       {%- if block.settings.show_order_weight -%}
                         <div class="h-stack gap-4 justify-between">
                           <span class="text-subdued">{{ 'cart.general.weight' | t }}</span>
@@ -136,6 +147,16 @@
                         {% assign cart.total_price = total_in_cents %}
                         <span class="h5">{{ total_in_cents | money }}</span>
                       </div>
+                      {%- if chb_has_sub -%}
+                        <div class="chb-cart-sub-reassurance">
+                          Esta &eacute; uma <strong>assinatura recorrente</strong>. Ap&oacute;s a primeira entrega, voc&ecirc; receber&aacute; o kit automaticamente todo m&ecirc;s e a cobran&ccedil;a de <strong>{{ chb_monthly_price | money }}</strong> se repetir&aacute; mensalmente at&eacute; o cancelamento. Cancele quando quiser, sem multa.
+                        </div>
+                        {%- if cart.cart_level_discount_applications.size > 0 -%}
+                          <p class="chb-cart-sub-note">Hoje voc&ecirc; paga <strong>{{ total_in_cents | money }}</strong> (1&ordm; m&ecirc;s com cupom). Depois, <strong>{{ chb_monthly_price | money }}/m&ecirc;s</strong>. Cancele quando quiser.</p>
+                        {%- else -%}
+                          <p class="chb-cart-sub-note"><strong>{{ chb_monthly_price | money }}/m&ecirc;s</strong> &middot; Cancele quando quiser.</p>
+                        {%- endif -%}
+                      {%- endif -%}
                       {%- if block.settings.show_shipping_text -%}
                         {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
                           <span class="text-subdued text-sm">
@@ -199,7 +220,12 @@
                       </div>
                     {% endif %}
                   {%- when 'checkout_button' -%}
-                    <button type="submit" name="checkout" class="button button--xl w-full" is="custom-button">Finalizar compra</button>
+                    {%- if chb_has_sub -%}
+                      <button type="submit" name="checkout" class="button button--xl w-full chb-btn-sub" is="custom-button">&#x21BB; Finalizar assinatura</button>
+                      <p class="chb-cart-lock-note">&#x1F512; Compra segura &middot; Cancele a qualquer momento</p>
+                    {%- else -%}
+                      <button type="submit" name="checkout" class="button button--xl w-full" is="custom-button">Finalizar compra</button>
+                    {%- endif -%}
                 {%- endcase -%}
               {%- endfor -%}
             </form>
@@ -234,6 +260,61 @@
     </div>
   {%- endif -%}
 </div>
+<style>
+  /* CHB subscription UI in cart */
+  .chb-cart-sub-header {
+    background: #1a6b3a;
+    color: #fff;
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .chb-cart-sub-reassurance {
+    font-size: 12px;
+    color: #2e5e3a;
+    background: #e6f4ec;
+    border: 1px solid #b2d9c0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+  .chb-cart-sub-note {
+    font-size: 12px;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 6px;
+  }
+  .chb-btn-sub {
+    background-color: #1a6b3a !important;
+    border-color: #1a6b3a !important;
+  }
+  .chb-btn-sub:hover {
+    background-color: #145530 !important;
+    border-color: #145530 !important;
+  }
+  .chb-cart-lock-note {
+    font-size: 11.5px;
+    color: #888;
+    text-align: center;
+    margin-top: 6px;
+  }
+  .chb-li-sub-badge {
+    display: inline-block;
+    background: #e6f4ec;
+    color: #1a6b3a;
+    border: 1px solid #b2d9c0;
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 2px 7px;
+    margin-top: 3px;
+  }
+</style>
 <style>
                   #progress-container {
                   width: 100%;
