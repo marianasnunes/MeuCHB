@@ -117,20 +117,6 @@
       tipLead: 'Dica do Método CH:',
       tipText: 'Intercale a nutrição com a hidratação ao longo da semana e evite aplicar óleos diretamente na raiz se o seu couro tende à oleosidade.',
       cta: 'Quero o Kit Nutrição'
-    },
-    cronograma: {
-      kit: 'Kit Cronograma Completo',
-      tagline: 'Reconstrução · Hidratação · Nutrição',
-      pills: ['RECONSTRUÇÃO', 'HIDRATAÇÃO', 'NUTRIÇÃO'],
-      desc: 'Seu cabelo apresenta mais de uma necessidade em equilíbrio. Em vez de focar em um só pilar, o Kit Cronograma Completo do Método CH organiza reconstrução, hidratação e nutrição em uma rotina semanal, tratando o fio de forma completa para recuperar saúde, força e brilho ao mesmo tempo.',
-      cards: [
-        { icon: '🔄', label: 'FOCO',      value: 'Equilíbrio dos 3 pilares' },
-        { icon: '📅', label: 'AÇÃO',      value: 'Cronograma capilar' },
-        { icon: '✨', label: 'RESULTADO', value: 'Cabelo equilibrado' }
-      ],
-      tipLead: 'Dica do Método CH:',
-      tipText: 'Monte a semana intercalando os três tratamentos — por exemplo hidratação, nutrição e reconstrução — sempre respeitando um dia de intervalo entre eles.',
-      cta: 'Quero o Cronograma Completo'
     }
   };
 
@@ -183,20 +169,6 @@
         { focus: 'Hidratação & manutenção', treat: 'vitaminas' }
       ],
       boxTreat: 'amino'
-    },
-    cronograma: {
-      profile: 'Cronograma Completo',
-      intro: 'Seu cronograma de 6 meses equilibra os três pilares — hidratação, nutrição e reconstrução — alternando os tratamentos a cada mês para um fio completo.',
-      base: 'Shampoo · Condicionador · Diamond',
-      months: [
-        { focus: 'Hidratação',   treat: 'vitaminas' },
-        { focus: 'Nutrição',     treat: 'balm' },
-        { focus: 'Reconstrução', treat: 'amino' },
-        { focus: 'Hidratação',   treat: 'vitaminas' },
-        { focus: 'Nutrição',     treat: 'balm' },
-        { focus: 'Reconstrução', treat: 'amino' }
-      ],
-      boxTreat: 'rotativo'
     }
   };
 
@@ -218,7 +190,6 @@
       ['hidratacao',   sc.hidratacao],
       ['nutricao',     sc.nutricao]
     ].sort(function (a, b) { return b[1] - a[1]; });
-    if (trio[0][1] >= 5 && trio[1][1] >= 4) return 'cronograma';
     return trio[0][0];
   }
 
