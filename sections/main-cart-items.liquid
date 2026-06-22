@@ -17,6 +17,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+  /* CHB subscription badge on cart item row */
+  .chb-cart-item-sub-badge {
+    display: inline-block;
+    background: #e6f4ec;
+    color: #1a6b3a;
+    border: 1px solid #b2d9c0;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 8px;
+    margin-top: 4px;
+    letter-spacing: 0.01em;
+  }
 {%- endstyle -%}
 
 {%- unless settings.cart_type == 'drawer' -%}
@@ -103,6 +116,13 @@
                       {%- endif -%}
 
                       <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+
+                      {%- if item.compare_at_price > item.final_price -%}
+                        <div class="chb-cart-item-sub-badge">
+                          ↻ Assinatura mensal &nbsp;·&nbsp; Renova todo mês &nbsp;·&nbsp; Cancele quando quiser
+                        </div>
+                      {%- endif -%}
+
 
                       {%- if item.original_price != item.final_price -%}
                         <div class="cart-item__discounted-prices">
