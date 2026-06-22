@@ -64,6 +64,11 @@
           <p class="quiz-dc-result-desc"></p>
           <div class="quiz-dc-result-cards"></div>
           <div class="quiz-dc-tip"></div>
+          <button type="button" class="quiz-dc-btn quiz-dc-cta"></button>
+          <div class="quiz-dc-plan-note">Monte sua assinatura mensal com desconto →</div>
+          <div class="quiz-dc-restart" role="button" tabindex="0">↻ Refazer o diagnóstico</div>
+        </div>
+      </div>
 
       <!-- PLAN / ASSINATURA -->
       <div class="quiz-dc-screen quiz-dc-plan" data-screen="plan" hidden>
@@ -120,36 +125,24 @@
   <script src="{{ 'quiz-capilar.js' | asset_url }}" defer></script>
   <script>
     (function () {
+      var urls = {
+        queda:        '/products/cronograma-capilar',
+        reconstrucao: '/products/kit-reconstrucao-diamond',
+        hidratacao:   '/products/kit-hidratacao-diamond',
+        nutricao:     '/products/kit-nutricao-diamond',
+        cronograma:   '/products/cronograma-capilar'
+      };
       function boot() {
         if (window.QuizCapilarInit) {
-          window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), {
-            ctaUrls: {
-              queda:        '/products/cronograma-capilar',
-              reconstrucao: '/products/kit-reconstrucao-diamond',
-              hidratacao:   '/products/kit-hidratacao-diamond',
-              nutricao:     '/products/kit-nutricao-diamond',
-              cronograma:   '/products/cronograma-capilar'
-            }
-          });
+          window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), { ctaUrls: urls });
         } else {
           document.addEventListener('DOMContentLoaded', function () {
-            window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), {
-              ctaUrls: {
-                queda:        '/products/cronograma-capilar',
-                reconstrucao: '/products/kit-reconstrucao-diamond',
-                hidratacao:   '/products/kit-hidratacao-diamond',
-                nutricao:     '/products/kit-nutricao-diamond',
-                cronograma:   '/products/cronograma-capilar'
-              }
-            });
+            window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-page-{{ section.id }}'), { ctaUrls: urls });
           });
         }
       }
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', boot);
-      } else {
-        boot();
-      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); }
+      else { boot(); }
     })();
   </script>
 {%- else -%}
@@ -158,9 +151,7 @@
       <div class="page">
         <h1 class="h1 text-center">{{ page.title }}</h1>
         {%- if page.content != empty -%}
-          <div class="prose">
-            {{ page.content }}
-          </div>
+          <div class="prose">{{ page.content }}</div>
         {%- endif -%}
       </div>
     </div>

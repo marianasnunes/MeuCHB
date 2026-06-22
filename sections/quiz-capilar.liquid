@@ -16,9 +16,7 @@
         <div class="quiz-dc-eyebrow">Diagnóstico Capilar</div>
         <h2 class="quiz-dc-h2">Qual kit o seu<br>cabelo <em>realmente</em> precisa?</h2>
         <p class="quiz-dc-intro-p">Em menos de 3 minutos, vamos entender o estado atual do seu fio e indicar o kit CH ideal para a sua rotina.</p>
-        <div class="quiz-dc-dots">
-          <span></span><span></span><span></span>
-        </div>
+        <div class="quiz-dc-dots"><span></span><span></span><span></span></div>
         <div class="quiz-dc-features">
           <span><i></i>7 perguntas</span>
           <span><i></i>Resultado personalizado</span>
@@ -60,23 +58,23 @@
         <p class="quiz-dc-result-desc"></p>
         <div class="quiz-dc-result-cards"></div>
         <div class="quiz-dc-tip"></div>
+        <button type="button" class="quiz-dc-btn quiz-dc-cta"></button>
+        <div class="quiz-dc-plan-note">Monte sua assinatura mensal com desconto →</div>
+        <div class="quiz-dc-restart" role="button" tabindex="0">↻ Refazer o diagnóstico</div>
+      </div>
+    </div>
 
     <!-- PLAN / ASSINATURA -->
     <div class="quiz-dc-screen quiz-dc-plan" data-screen="plan" hidden>
       <div class="quiz-dc-plan-wrap">
         <div class="quiz-dc-back" role="button" tabindex="0">← Voltar ao resultado</div>
-
         <div class="quiz-dc-card quiz-dc-card--plan">
-
-          <!-- hero -->
           <div class="quiz-dc-plan-hero">
             <div class="quiz-dc-eyebrow">Assinatura Mensal · Método CH</div>
             <h2 class="quiz-dc-h2">Faça a sua assinatura mensal e receba seu tratamento ideal <em>com desconto</em></h2>
             <div class="quiz-dc-plan-profile"></div>
             <p class="quiz-dc-plan-intro"></p>
           </div>
-
-          <!-- pricing strip -->
           <div class="quiz-dc-pricing-strip">
             <div class="quiz-dc-pricing-main">
               <div class="quiz-dc-pricing-label">Assinante paga</div>
@@ -92,8 +90,6 @@
               <li>Cancele quando quiser</li>
             </ul>
           </div>
-
-          <!-- 6 months -->
           <div class="quiz-dc-plan-section">
             <div class="quiz-dc-plan-section-head">
               <h3 class="quiz-dc-plan-section-title">Seus 6 primeiros meses de tratamento</h3>
@@ -101,8 +97,6 @@
             </div>
             <div class="quiz-dc-months"></div>
           </div>
-
-          <!-- recurring box -->
           <div class="quiz-dc-box">
             <div class="quiz-dc-box-num">Mês&nbsp;7+<span>Box de manutenção</span></div>
             <div class="quiz-dc-box-div"></div>
@@ -111,13 +105,10 @@
               <div class="quiz-dc-box-items"></div>
             </div>
           </div>
-
-          <!-- CTA assinatura -->
           <div class="quiz-dc-plan-cta">
             <a href="#" class="quiz-dc-btn quiz-dc-assin-btn" target="_self" rel="noopener">Assinar agora com desconto</a>
             <div class="quiz-dc-plan-cta-note">Frete grátis acima de R$400 · Cancele quando quiser</div>
           </div>
-
         </div>
       </div>
     </div>
@@ -129,35 +120,23 @@
 <script>
   (function () {
     function boot() {
+      var urls = {
+        queda:        '{{ section.settings.url_queda | default: "/products/cronograma-capilar" }}',
+        reconstrucao: '{{ section.settings.url_reconstrucao | default: "/products/kit-reconstrucao-diamond" }}',
+        hidratacao:   '{{ section.settings.url_hidratacao | default: "/products/kit-hidratacao-diamond" }}',
+        nutricao:     '{{ section.settings.url_nutricao | default: "/products/kit-nutricao-diamond" }}',
+        cronograma:   '{{ section.settings.url_cronograma | default: "/products/cronograma-capilar" }}'
+      };
       if (window.QuizCapilarInit) {
-        window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
-          ctaUrls: {
-            queda:        '/products/cronograma-capilar',
-            reconstrucao: '/products/kit-reconstrucao-diamond',
-            hidratacao:   '/products/kit-hidratacao-diamond',
-            nutricao:     '/products/kit-nutricao-diamond',
-            cronograma:   '/products/cronograma-capilar'
-          }
-        });
+        window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), { ctaUrls: urls });
       } else {
         document.addEventListener('DOMContentLoaded', function () {
-          window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), {
-            ctaUrls: {
-              queda:        '/products/cronograma-capilar',
-              reconstrucao: '/products/kit-reconstrucao-diamond',
-              hidratacao:   '/products/kit-hidratacao-diamond',
-              nutricao:     '/products/kit-nutricao-diamond',
-              cronograma:   '/products/cronograma-capilar'
-            }
-          });
+          window.QuizCapilarInit && window.QuizCapilarInit(document.getElementById('quiz-dc-{{ section.id }}'), { ctaUrls: urls });
         });
       }
     }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', boot);
-    } else {
-      boot();
-    }
+    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', boot); }
+    else { boot(); }
   })();
 </script>
 
@@ -165,58 +144,16 @@
 {
   "name": "Quiz Diagnóstico Capilar",
   "settings": [
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Texto superior (eyebrow)",
-      "default": "MEUCHB.COM.BR · MÉTODO CH"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Título",
-      "default": "Diagnóstico <em>Capilar</em>"
-    },
-    {
-      "type": "text",
-      "id": "subheading",
-      "label": "Subtítulo",
-      "default": "Responda 7 perguntas e descubra qual kit foi feito para o seu cabelo."
-    },
-    {
-      "type": "header",
-      "content": "Links dos kits (resultado do quiz)"
-    },
-    {
-      "type": "url",
-      "id": "url_queda",
-      "label": "Kit Anti-Queda — URL do produto"
-    },
-    {
-      "type": "url",
-      "id": "url_reconstrucao",
-      "label": "Kit Reconstrução — URL do produto"
-    },
-    {
-      "type": "url",
-      "id": "url_hidratacao",
-      "label": "Kit Hidratação — URL do produto"
-    },
-    {
-      "type": "url",
-      "id": "url_nutricao",
-      "label": "Kit Nutrição — URL do produto"
-    },
-    {
-      "type": "url",
-      "id": "url_cronograma",
-      "label": "Kit Cronograma Completo — URL do produto"
-    }
+    { "type": "text", "id": "eyebrow", "label": "Texto superior (eyebrow)", "default": "MEUCHB.COM.BR · MÉTODO CH" },
+    { "type": "text", "id": "heading", "label": "Título", "default": "Diagnóstico <em>Capilar</em>" },
+    { "type": "text", "id": "subheading", "label": "Subtítulo", "default": "Responda 7 perguntas e descubra qual kit foi feito para o seu cabelo." },
+    { "type": "header", "content": "Links dos kits (resultado do quiz)" },
+    { "type": "url", "id": "url_queda",        "label": "Kit Anti-Queda — URL do produto" },
+    { "type": "url", "id": "url_reconstrucao", "label": "Kit Reconstrução — URL do produto" },
+    { "type": "url", "id": "url_hidratacao",   "label": "Kit Hidratação — URL do produto" },
+    { "type": "url", "id": "url_nutricao",     "label": "Kit Nutrição — URL do produto" },
+    { "type": "url", "id": "url_cronograma",   "label": "Kit Cronograma Completo — URL do produto" }
   ],
-  "presets": [
-    {
-      "name": "Quiz Diagnóstico Capilar"
-    }
-  ]
+  "presets": [{ "name": "Quiz Diagnóstico Capilar" }]
 }
 {% endschema %}
