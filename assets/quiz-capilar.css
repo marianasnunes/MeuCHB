@@ -178,9 +178,11 @@
 }
 .quiz-dc-rc-value {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 17px;
+  font-size: 24px;
+  font-weight: 600;
   color: #3a342c;
   line-height: 1.2;
+  text-align: center;
 }
 
 /* plan note + secondary button */
