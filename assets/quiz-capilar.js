@@ -362,7 +362,7 @@
           var div = document.createElement('div');
           div.className = 'quiz-dc-result-card';
           div.innerHTML =
-            '<div class="quiz-dc-rc-label"><strong>' + c.label + '</strong></div>' +
+            '<div class="quiz-dc-rc-label">' + c.label + '</div>' +
             '<div class="quiz-dc-rc-value">' + c.value + '</div>';
           cardsEl.appendChild(div);
         });
