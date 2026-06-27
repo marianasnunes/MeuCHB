@@ -77,46 +77,46 @@
 
   var RESULTS = {
     reconstrucao: {
-      kit: 'Kit Reconstrução',
+      kit: 'Método de Reconstrução',
       tagline: 'Força · Queratina · Fim da quebra',
       pills: ['RECONSTRUÇÃO', 'FORÇA', 'QUÍMICA'],
-      desc: 'Seu cabelo está pedindo massa e resistência. Procedimentos químicos, calor e quebra deixam o fio poroso e fragilizado. O Kit Reconstrução do Método CH repõe queratina e aminoácidos na fibra capilar, devolvendo força, elasticidade e selando as pontas para frear a quebra.',
+      desc: 'Seu cabelo está pedindo massa e resistência. Procedimentos químicos, calor e quebra deixam o fio poroso e fragilizado. O Método de Reconstrução repõe queratina e aminoácidos na fibra capilar, devolvendo força, elasticidade e selando as pontas para frear a quebra.',
       cards: [
-        { icon: '🧱', label: 'FOCO',      value: 'Reposição de massa' },
-        { icon: '💪', label: 'AÇÃO',      value: 'Queratina + aminoácidos' },
-        { icon: '🛡️', label: 'RESULTADO', value: 'Fios mais resistentes' }
+        { label: 'FOCO',      value: 'Reposição de massa' },
+        { label: 'AÇÃO',      value: 'Queratina + aminoácidos' },
+        { label: 'RESULTADO', value: 'Fios mais resistentes' }
       ],
       tipLead: 'Dica do Método CH:',
       tipText: 'Use a reconstrução no máximo 1x por semana e sempre intercalada com hidratação — excesso de proteína pode deixar o fio rígido e quebradiço.',
-      cta: 'Quero o Kit Reconstrução'
+      cta: 'Quero o Método de Reconstrução'
     },
     hidratacao: {
-      kit: 'Kit Hidratação',
+      kit: 'Método de Hidratação',
       tagline: 'Maciez · Brilho · Controle do frizz',
       pills: ['HIDRATAÇÃO', 'BRILHO', 'FRIZZ'],
-      desc: 'Falta água na fibra capilar. Fios opacos, ressecados e com frizz são sinais clássicos de desidratação. O Kit Hidratação do Método CH repõe água e ativos umectantes que selam a cutícula, controlam o volume indesejado e devolvem maciez e brilho ao cabelo.',
+      desc: 'Falta água na fibra capilar. Fios opacos, ressecados e com frizz são sinais clássicos de desidratação. O Método de Hidratação repõe água e ativos umectantes que selam a cutícula, controlam o volume indesejado e devolvem maciez e brilho ao cabelo.',
       cards: [
-        { icon: '💧', label: 'FOCO',      value: 'Reposição de água' },
-        { icon: '🌿', label: 'AÇÃO',      value: 'Ativos umectantes' },
-        { icon: '✨', label: 'RESULTADO', value: 'Maciez e brilho' }
+        { label: 'FOCO',      value: 'Reposição de água' },
+        { label: 'AÇÃO',      value: 'Ativos umectantes' },
+        { label: 'RESULTADO', value: 'Maciez e brilho' }
       ],
       tipLead: 'Dica do Método CH:',
       tipText: 'Aplique a máscara no cabelo úmido, do comprimento às pontas, e deixe agir de 5 a 10 minutos antes de enxaguar para potencializar a hidratação.',
-      cta: 'Quero o Kit Hidratação'
+      cta: 'Quero o Método de Hidratação'
     },
     nutricao: {
-      kit: 'Kit Nutrição',
+      kit: 'Método de Nutrição',
       tagline: 'Nutrição · Lipídios · Couro equilibrado',
       pills: ['NUTRIÇÃO', 'MACIEZ', 'LIPÍDIOS'],
-      desc: 'Seu fio precisa repor lipídios e óleos naturais. Cabelos com tendência à oleosidade na raiz e ressecamento no comprimento pedem nutrição. O Kit Nutrição do Método CH repõe óleos vegetais que selam a cutícula, equilibram o couro e devolvem nutrição sem pesar nos fios.',
+      desc: 'Seu fio precisa repor lipídios e óleos naturais. Cabelos com tendência à oleosidade na raiz e ressecamento no comprimento pedem nutrição. O Método de Nutrição repõe óleos vegetais que selam a cutícula, equilibram o couro e devolvem nutrição sem pesar nos fios.',
       cards: [
-        { icon: '🥑', label: 'FOCO',      value: 'Reposição de lipídios' },
-        { icon: '🫧', label: 'AÇÃO',      value: 'Óleos vegetais' },
-        { icon: '✨', label: 'RESULTADO', value: 'Fios nutridos' }
+        { label: 'FOCO',      value: 'Reposição de lipídios' },
+        { label: 'AÇÃO',      value: 'Óleos vegetais' },
+        { label: 'RESULTADO', value: 'Fios nutridos' }
       ],
       tipLead: 'Dica do Método CH:',
       tipText: 'Intercale a nutrição com a hidratação ao longo da semana e evite aplicar óleos diretamente na raiz se o seu couro tende à oleosidade.',
-      cta: 'Quero o Kit Nutrição'
+      cta: 'Quero o Método de Nutrição'
     }
   };
 
@@ -362,15 +362,14 @@
           var div = document.createElement('div');
           div.className = 'quiz-dc-result-card';
           div.innerHTML =
-            '<div class="quiz-dc-rc-icon">' + c.icon + '</div>' +
-            '<div class="quiz-dc-rc-label">' + c.label + '</div>' +
+            '<div class="quiz-dc-rc-label"><strong>' + c.label + '</strong></div>' +
             '<div class="quiz-dc-rc-value">' + c.value + '</div>';
           cardsEl.appendChild(div);
         });
       }
 
       if (tipEl) {
-        tipEl.innerHTML = '💡 <strong>' + r.tipLead + '</strong> ' + r.tipText;
+        tipEl.style.display = 'none';
       }
 
       if (mesesTextEl) {
